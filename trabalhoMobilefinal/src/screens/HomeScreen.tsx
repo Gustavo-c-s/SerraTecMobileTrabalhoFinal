@@ -3,11 +3,13 @@ import React from "react";
 import { HomeScreenProps } from "../types/navigation";
 import Login from "../components/Login";
 import CadastraUsuario from "../components/CadastraUsuario";
+import CadastrarProduto from "../components/CadastrarProdudos";
 
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   return (
     <View>
-      <Login />
+      <CadastrarProduto/>
+      {/* <Login /> */}
       {/* <CadastraUsuario/> */}
       <View>
         <Button
