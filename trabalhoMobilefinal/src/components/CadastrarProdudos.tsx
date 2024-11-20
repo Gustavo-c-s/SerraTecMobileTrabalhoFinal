@@ -2,7 +2,8 @@ import { View, Text, Alert } from "react-native";
 import { InputTexto } from "./Input";
 import { useState } from "react";
 import { Button } from "@react-navigation/elements";
-import { postProduto } from "../services/produtosService";
+import { postProduto, deleteProduto } from "../services/produtosService";
+import axios from "axios";
 
 export default function CadastrarProduto(){
 
@@ -11,7 +12,7 @@ export default function CadastrarProduto(){
     const [valor, setValor]=useState("")
     const [image, setImage]=useState("")
 
-    const CadastroProduto = async ()=>{
+    const cadastroProduto = async ()=>{
         if(nome == "" || descricao == "" || valor == "" || image == ""){
         Alert.alert("Favor verificar e preencher os campos corretamente!");
         return;
@@ -30,6 +31,18 @@ export default function CadastrarProduto(){
         }
         //console.log(nome, descricao,valor, image)
     }
+
+    // const apagarProduto = async (dele:number)=>{
+    //     try {
+    //         const apagarProduto = await deleteProduto(id:Number))
+    //         console.log("Produto: ", produto," apagado")
+            
+
+    //     } catch (error) {
+    //         console.log("Dados:", dados)
+    //     }
+    //     console.log("deletado")
+    // }
 
     return(
         <View>
@@ -58,7 +71,8 @@ export default function CadastrarProduto(){
             value={image}
             setvalue={setImage}
             />
-            <Button onPressIn={CadastroProduto} >CADASTRAR PRODUDO</Button>
+            <Button onPressIn={cadastroProduto} >CADASTRAR PRODUDO</Button>
+           {/* <Button onPressIn={()=> apagarProduto(produto.id)}>APAGAR PRODUTO</Button> */}
             
             </View>
     )
