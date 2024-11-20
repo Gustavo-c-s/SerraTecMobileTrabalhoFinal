@@ -2,13 +2,15 @@ import {
   View,
   FlatList,
   StyleSheet,
+  Button,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import CardProduto from "../components/CardProduto";
 import axios from "axios";
+import { VitriniScreenProps } from "../types/navigation";
 const URL = "";
 
-export default function VitriniScreem() {
+export default function VitriniScreem({navigation}:VitriniScreenProps) {
   const [lista, setLista] = useState<any>([
     {
       id: "",
@@ -40,7 +42,12 @@ export default function VitriniScreem() {
       <FlatList
         data={lista}
         renderItem={({ item, index }) => (
+          <View>
           <CardProduto lista={item} deletarItem={deletarItem} />
+          <Button
+           title="ir para pagina detalhes do produto" 
+           onPress={'ir para pagina detalhes do produto'}/>
+          </View>
         )}
         keyExtractor={(item, index) => item.id.toString()}
       />
@@ -50,7 +57,6 @@ export default function VitriniScreem() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
   },
  
 });
