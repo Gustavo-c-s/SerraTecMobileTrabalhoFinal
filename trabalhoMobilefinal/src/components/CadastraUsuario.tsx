@@ -14,10 +14,10 @@ export default function CadastraUsuario() {
     if (nome == "" || email == "" || senha == "" || telefone == "") return;
     const novoCadastro = {
       nome: nome,
-      email:email,
-      senha:senha,
-      telefone:telefone,
-      tipo:tipo,
+      email: email,
+      senha: senha,
+      telefone: telefone,
+      tipo: tipo,
     };
     try {
       const enviaUsuario = await postUsuario(novoCadastro);
@@ -39,8 +39,7 @@ export default function CadastraUsuario() {
   );
 }
 const style = StyleSheet.create({
-    container: {
-      flex: 0.1,
-      
-    },
-  });
+  container: {
+    flex: 0.1,
+  },
+});

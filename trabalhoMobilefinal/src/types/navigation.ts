@@ -7,15 +7,14 @@ export type StackParamList = {
   Vitrini: undefined;
   Integrante: undefined;
   CardProduto: {
-    lista:{
-      id:string | number;
-      nome:string;
-      descricao:string;
-      image:string;
-      valor:string |Float;
-    },
-    
-};
+    lista: {
+      id: string | number;
+      nome: string;
+      descricao: string;
+      image: string;
+      valor: string | Float;
+    };
+  };
 };
 export type HomeNavigationProps = NativeStackNavigationProp<
   StackParamList,

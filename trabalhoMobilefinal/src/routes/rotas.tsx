@@ -18,7 +18,7 @@ export const Rotas = () => {
         options={{
           headerShown: false,
         }}
-      //  layout={NavBar}
+        //  layout={NavBar}
       />
 
       <Screen name="Vitrini" component={VitriniScreem} />
