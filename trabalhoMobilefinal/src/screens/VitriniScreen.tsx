@@ -13,9 +13,15 @@ const URL = "";
 export default function VitriniScreem({navigation}:VitriniScreenProps) {
   const [lista, setLista] = useState<any>([
     {
-      id: "",
+      id: "1",
       name: "Tenis",
-      valor: 2.5,
+      valor: 200,
+      image: 'https://midonstore.com/cdn/shop/files/2AA3B3C6-3196-4ACE-AA9F-25BF290CD1C0_1.jpg?v=1708305269&width=1179',
+    },
+    {
+      id: "2",
+      name: "Tenis",
+      valor: 250,
       image: 'https://midonstore.com/cdn/shop/files/2AA3B3C6-3196-4ACE-AA9F-25BF290CD1C0_1.jpg?v=1708305269&width=1179',
     },
   ]);
@@ -41,7 +47,7 @@ export default function VitriniScreem({navigation}:VitriniScreenProps) {
     <View style={style.container}>
       <FlatList
         data={lista}
-        renderItem={({ item, index }) => (
+        renderItem={({ item}) => (
           <View>
           <CardProduto lista={item} deletarItem={deletarItem} />
           <Button
@@ -49,7 +55,7 @@ export default function VitriniScreem({navigation}:VitriniScreenProps) {
            onPress={'ir para pagina detalhes do produto'}/>
           </View>
         )}
-        keyExtractor={(item, index) => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );

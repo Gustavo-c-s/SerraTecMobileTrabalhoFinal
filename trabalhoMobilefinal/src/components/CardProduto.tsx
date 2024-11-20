@@ -6,7 +6,7 @@ export default function CardProduto({ lista ,deletarItem}:CardProdutoprops) {
       return (
     <View style={style.container}>
       <Text>{lista.name} - Nome Produto</Text>
-      <Text>{lista.valor} - Valot Produto</Text>
+      <Text>{lista.valor} - Valor Produto</Text>
       <Image style={style.box} source={{uri:lista.image}} />
       <Text>{lista.descricao} - Descrição</Text>
       {/* <View>
