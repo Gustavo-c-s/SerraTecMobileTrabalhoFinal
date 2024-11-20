@@ -2,18 +2,26 @@ import {
   View,
   FlatList,
   StyleSheet,
+  Button,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import CardProduto from "../components/CardProduto";
 import axios from "axios";
+import { VitriniScreenProps } from "../types/navigation";
 const URL = "";
 
-export default function VitriniScreem() {
+export default function VitriniScreem({navigation}:VitriniScreenProps) {
   const [lista, setLista] = useState<any>([
     {
-      id: "",
+      id: "1",
       name: "Tenis",
-      valor: 2.5,
+      valor: 200,
+      image: 'https://midonstore.com/cdn/shop/files/2AA3B3C6-3196-4ACE-AA9F-25BF290CD1C0_1.jpg?v=1708305269&width=1179',
+    },
+    {
+      id: "2",
+      name: "Tenis",
+      valor: 250,
       image: 'https://midonstore.com/cdn/shop/files/2AA3B3C6-3196-4ACE-AA9F-25BF290CD1C0_1.jpg?v=1708305269&width=1179',
     },
   ]);
@@ -39,10 +47,15 @@ export default function VitriniScreem() {
     <View style={style.container}>
       <FlatList
         data={lista}
-        renderItem={({ item, index }) => (
+        renderItem={({ item}) => (
+          <View>
           <CardProduto lista={item} deletarItem={deletarItem} />
+          <Button
+           title="ir para pagina detalhes do produto" 
+           onPress={'ir para pagina detalhes do produto'}/>
+          </View>
         )}
-        keyExtractor={(item, index) => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
@@ -50,7 +63,6 @@ export default function VitriniScreem() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
   },
  
 });
