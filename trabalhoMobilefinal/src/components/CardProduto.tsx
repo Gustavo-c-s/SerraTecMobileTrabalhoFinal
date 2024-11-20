@@ -1,11 +1,24 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
+import { CardProdutoprops } from "../types/navigation";
+import { Float } from "react-native/Libraries/Types/CodegenTypes";
 
-export default function CardProduto({ lista ,deletarItem}) {
+type CardProduto= {
+  lista:{
+    id:string | number;
+    nome:string;
+    descricao:string;
+    image:string;
+    valor:string |Float;
+  },
+  deletarItem:(id:number|string)=>void
+};
+export default function CardProduto({ deletarItem,lista}:CardProduto) {
+
       return (
-    <View>
-      <Text>{lista.name} - Nome Produto</Text>
-      <Text>{lista.valor} - Valot Produto</Text>
+    <View style={style.container}>
+      <Text>{lista.nome} - Nome Produto </Text>
+      <Text>{lista.valor} - Valor Produto</Text>
       <Image style={style.box} source={{uri:lista.image}} />
       <Text>{lista.descricao} - Descrição</Text>
       <View>
@@ -22,11 +35,11 @@ export default function CardProduto({ lista ,deletarItem}) {
 const style = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: "center",
+   
     },
     box: {
       height: 200,
       width: 200,
-      backgroundColor: "#7e00f3",
+      // backgroundColor: "#7e00f3",
     },
   });
