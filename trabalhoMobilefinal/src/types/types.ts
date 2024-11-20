@@ -20,4 +20,4 @@ export type InputProps={
     value:string;
     setvalue:(value:string)=>void;
   
-  }
+}
