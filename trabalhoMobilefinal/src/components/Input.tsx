@@ -51,7 +51,7 @@ export function InputEmail({ label, value, setvalue }: InputProps) {
   return (
     <View>
       <View>
-        <Text style={styles.texto}>{label}</Text>;
+        <Text style={styles.texto}>{label}</Text>
       </View>
       <TextInput
         style={styles.input}

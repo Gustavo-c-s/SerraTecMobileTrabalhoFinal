@@ -15,7 +15,7 @@ export default function Login() {
     <View>
       <InputEmail label="Login" value={login} setvalue={setLogin} />
       <InputSenha label="Senha" value={senha} setvalue={setSenha} />
-      <Button title="entra" onPress={fazerLogin} />
+      <Button title="Entra" onPress={fazerLogin} />
     </View>
   );
 }
