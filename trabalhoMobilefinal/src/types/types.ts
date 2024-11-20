@@ -15,3 +15,9 @@ export type usuario ={
     telefone: string,
     tipo: string,
 }
+export type InputProps={
+    label:string;
+    value:string;
+    setvalue:(value:string)=>void;
+  
+  }

@@ -1,7 +1,7 @@
-import { Button, ScrollView, StyleSheet, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
 import React, { useState } from "react";
-import { InputSenha, InputTexto } from "./Input";
-import CadastraUsuario from "./CadastraUsuario";
+import { InputEmail, InputSenha } from "./Input";
+
 
 export default function Login() {
   const [login, setLogin] = useState("");
@@ -13,14 +13,12 @@ export default function Login() {
 
   return (
     <View>
-      <InputTexto label="Login" value={login} setvalue={setLogin} />
-      <InputSenha label={"Senha"} value={senha} setvalue={setSenha} />
+      <InputEmail label="Login" value={login} setvalue={setLogin} />
+      <InputSenha label="Senha" value={senha} setvalue={setSenha} />
       <Button title="entra" onPress={fazerLogin} />
     </View>
   );
 }
 const style = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+
 });
