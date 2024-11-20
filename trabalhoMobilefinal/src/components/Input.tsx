@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
+import { InputProps } from "../types/types";
 
 type InputProps = {
   label: string;
@@ -17,7 +18,7 @@ export function InputTexto({ label, value, setvalue }: InputProps) {
   return (
     <View>
       <View>
-        <Text style={styles.texto}>{label}</Text>;
+        <Text style={styles.texto}>{label}</Text>
       </View>
       <TextInput
         style={styles.input}
@@ -33,7 +34,7 @@ export function InputSenha({ label, value, setvalue }: InputProps) {
   return (
     <View>
       <View>
-        <Text style={styles.texto}>{label}</Text>;
+        <Text style={styles.texto}>{label}</Text>
       </View>
       <TextInput
         style={styles.input}
@@ -56,7 +57,7 @@ export function InputEmail({ label, value, setvalue }: InputProps) {
   return (
     <View>
       <View>
-        <Text style={styles.texto}>{label}</Text>;
+        <Text style={styles.texto}>{label}</Text>
       </View>
       <TextInput
         style={styles.input}
