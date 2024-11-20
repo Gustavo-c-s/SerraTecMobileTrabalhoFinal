@@ -1,14 +1,14 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
-import React from "react";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
 
 type InputProps={
   label:string;
   value:string;
-  setvalue:undefined;
+  setvalue:(value:string)=>void;
 
 }
 
-export default function Input({ label ,value,setvalue}:InputProps) {
+export  function InputTexto({ label ,value,setvalue}:InputProps) {
 
   return (
     <View>
@@ -19,7 +19,48 @@ export default function Input({ label ,value,setvalue}:InputProps) {
         style={styles.input}
         value={value}
         onChangeText={setvalue}
-        placeholder="Aqui vai o meu placeholder"
+        placeholder="Digite aqui..."
+      />
+    </View>
+  );
+}
+export  function InputSenha({ label ,value,setvalue}:InputProps) {
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+  return (
+    <View>
+      <View>
+        <Text style={styles.texto}>{label}</Text>;
+      </View>
+      <TextInput
+        style={styles.input}
+        value={value}
+        onChangeText={setvalue}
+        placeholder="Digite aqui..."
+        secureTextEntry={!mostrarSenha}
+      />
+      <TouchableOpacity
+          onPress={() => setMostrarSenha(!mostrarSenha)}
+          style={styles.toggleButton}
+        >
+          <Text>{mostrarSenha ? "👀" : "🙈"}</Text>
+        </TouchableOpacity>
+    </View>
+  );
+}
+
+export function InputEmail({ label ,value,setvalue}:InputProps) {
+
+  return (
+    <View>
+      <View>
+        <Text style={styles.texto}>{label}</Text>;
+      </View>
+      <TextInput
+        style={styles.input}
+        value={value}
+        onChangeText={setvalue}
+        placeholder="Digite aqui..."
+        keyboardType="email-address"
       />
     </View>
   );
@@ -33,9 +74,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   input: {
-    height: 40,
-    margin: 12,
     borderWidth: 1,
+    padding: 10,
+  },
+  toggleButton: {
     padding: 10,
   },
 });

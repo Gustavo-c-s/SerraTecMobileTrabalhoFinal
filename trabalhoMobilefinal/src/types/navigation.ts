@@ -1,11 +1,21 @@
 import { RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Float } from "react-native/Libraries/Types/CodegenTypes";
 
 export type StackParamList = {
   Home: undefined;
   Vitrini: undefined;
   Integrante: undefined;
-  CardProduto: {lista:string};
+  CardProduto: {
+    lista:{
+      id:string | number;
+      nome:string;
+      descricao:string;
+      image:string;
+      valor:string |Float;
+    },
+    
+};
 };
 export type HomeNavigationProps = NativeStackNavigationProp<
   StackParamList,
@@ -18,6 +28,7 @@ export type HomeScreenProps = {
 export type CardProdutoprops = {
   navigation: NativeStackNavigationProp<StackParamList, "CardProduto">;
   route: RouteProp<StackParamList, "CardProduto">;
+  deletarItem?: (id: number | string) => void;
 };
 export type VitriniScreenProps = {
   navigation: NativeStackNavigationProp<StackParamList, "Vitrini">;
