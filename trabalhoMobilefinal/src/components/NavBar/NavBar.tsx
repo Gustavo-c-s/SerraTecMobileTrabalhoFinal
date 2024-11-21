@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Button } from "react-native";
 import { useFonts, Inter_400Regular } from "@expo-google-fonts/inter";
 import AppLoading from "expo-app-loading";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -43,6 +43,7 @@ export default function NavBar() {
             </TouchableOpacity>
           </View>
         </View>
+        
       </View>
     );
   }

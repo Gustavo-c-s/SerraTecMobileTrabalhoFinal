@@ -8,6 +8,8 @@ export type StackParamList = {
   NavBar: undefined;
   Vitrini: undefined;
   Integrante: undefined;
+  Cadastrousuario:undefined;
+  Cadastroproduto:undefined;
   CardProduto: {
     lista: {
       id: string | number;
@@ -18,10 +20,11 @@ export type StackParamList = {
     };
   };
 };
-export type HomeNavigationProps = NativeStackNavigationProp<
-  StackParamList,
-  "Home"
->;
+export type HomeNavigationProps = NativeStackNavigationProp<StackParamList, "Home">;
+
+export type HomeScreenProps = {
+  navigation: HomeNavigationProps;
+};
 
 export type NavBarProps = {
   navigation: NativeStackNavigationProp<StackParamList, "NavBar">;
