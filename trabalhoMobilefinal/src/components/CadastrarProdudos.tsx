@@ -1,9 +1,8 @@
-import { View, Text, Alert, ActivityIndicator } from "react-native";
+import { View, Text, Alert, ActivityIndicator, StyleSheet } from "react-native";
 import { InputTexto } from "./Input";
 import { useState } from "react";
 import { Button } from "@react-navigation/elements";
 import { postProduto } from "../services/produtosService";
-import axios from "axios";
 
 export default function CadastrarProduto() {
   const [carregando, setCarregando] = useState(false);
@@ -47,25 +46,43 @@ export default function CadastrarProduto() {
         </View>
       ) : (
         <View>
-          <Text>Castro Produtos</Text>
-
-          <InputTexto 
-          label="Nome Produto" 
-          value={nome} 
-          setvalue={setNome} />
+          <Text>Cadastro de Produtos</Text>
 
           <InputTexto
+            // stylesText={}
+            // stylesinput={}
+            label="Nome Produto"
+            value={nome}
+            setvalue={setNome}
+          />
+
+          <InputTexto
+            // stylesText={}
+            // stylesinput={}
             label="Descrição"
             value={descricao}
             setvalue={setDescricao}
           />
 
-          <InputTexto label="Preço" value={valor} setvalue={setValor} />
+          <InputTexto
+            // stylesText={}
+            // stylesinput={}
+            label="Preço"
+            value={valor}
+            setvalue={setValor}
+          />
 
-          <InputTexto label="Imagen" value={image} setvalue={setImage} />
+          <InputTexto
+            // stylesText={}
+            // stylesinput={}
+            label="Imagen"
+            value={image}
+            setvalue={setImage}
+          />
           <Button onPressIn={cadastroProduto}>CADASTRAR PRODUDO</Button>
         </View>
       )}
     </View>
   );
 }
+const style = StyleSheet.create({});

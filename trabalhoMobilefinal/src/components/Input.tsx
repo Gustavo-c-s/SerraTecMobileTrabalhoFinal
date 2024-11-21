@@ -10,14 +10,14 @@ import { InputProps } from "../types/types";
 
 
 
-export function InputTexto({ label, value, setvalue }: InputProps) {
+export function InputTexto({ stylesText,stylesinput, label, value, setvalue }: InputProps) {
   return (
     <View>
       <View>
-        <Text style={styles.texto}>{label}</Text>
+        <Text style={stylesText}>{label}</Text>
       </View>
       <TextInput
-        style={styles.input}
+        style={stylesinput}
         value={value}
         onChangeText={setvalue}
         placeholder="Digite aqui..."
@@ -25,15 +25,15 @@ export function InputTexto({ label, value, setvalue }: InputProps) {
     </View>
   );
 }
-export function InputSenha({ label, value, setvalue }: InputProps) {
+export function InputSenha({ stylesText,stylesinput, label, value, setvalue }: InputProps) {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   return (
     <View>
       <View>
-        <Text style={styles.texto}>{label}</Text>
+        <Text style={stylesText}>{label}</Text>
       </View>
       <TextInput
-        style={styles.input}
+        style={stylesinput}
         value={value}
         onChangeText={setvalue}
         placeholder="Digite aqui..."
@@ -49,14 +49,14 @@ export function InputSenha({ label, value, setvalue }: InputProps) {
   );
 }
 
-export function InputEmail({ label, value, setvalue }: InputProps) {
+export function InputEmail({  stylesText,stylesinput,label, value, setvalue }: InputProps) {
   return (
     <View style={styles.conteiner}>
       <View>
-        <Text style={styles.texto}>{label}</Text>
+        <Text style={stylesText}>{label}</Text>
       </View>
       <TextInput
-        style={styles.input}
+        style={stylesinput}
         value={value}
         onChangeText={setvalue}
         placeholder="Digite aqui..."

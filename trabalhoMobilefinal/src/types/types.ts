@@ -1,3 +1,4 @@
+import { StyleProp, TextStyle } from "react-native";
 import { Float } from "react-native/Libraries/Types/CodegenTypes";
 
 export type produto={
@@ -16,6 +17,8 @@ export type usuario ={
     tipo: string,
 }
 export type InputProps={
+    stylesText: StyleProp<TextStyle>;
+    stylesinput: StyleProp<TextStyle>
     label:string;
     value:string;
     setvalue:(value:string)=>void;

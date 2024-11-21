@@ -13,29 +13,13 @@ import {
   deleteProduto,
   getProduto,
   postProduto,
+  updateProduto,
 } from "../services/produtosService";
 import { produto } from "../types/types";
 
 export default function VitriniScreem({ navigation }: VitriniScreenProps) {
-  const [lista, setLista] = useState<produto[]>([
-    {
-      id: 1,
-      nome: "Tenis",
-      descricao: "Cor roxa",
-      image:
-        "https://midonstore.com/cdn/shop/files/2AA3B3C6-3196-4ACE-AA9F-25BF290CD1C0_1.jpg?v=1708305269&width=1179",
-      valor: "200",
-    },
-    {
-      id: "2",
-      nome: "Tenis",
-      descricao: "Cor roxa",
-      image:
-        "https://midonstore.com/cdn/shop/files/2AA3B3C6-3196-4ACE-AA9F-25BF290CD1C0_1.jpg?v=1708305269&width=1179",
-      valor: "250",
-    },
-  ]);
-  const [carregamento,setCarregamento]=useState(false);
+  const [lista, setLista] = useState<produto[]>([]);
+  const [carregamento, setCarregamento] = useState(false);
   const deletarItem = async (id: number | string) => {
     try {
       const enviandoApi = await deleteProduto(id);
@@ -47,28 +31,32 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
     }
   };
 
-  // const addProduto = async () => {
-  //   if (nome == "" || descricao == "" || valor == "" || image == "") return;
-  //   const novoProduto = {
-  //     nome: nome,
-  //     descricao: descricao,
-  //     valor: valor,
-  //     image: image,
-  //   };
-  //   try {
-  //     const enviaProduto = postProduto(novoProduto);
-  //     console.log("post: ", enviaProduto);
-  //     setLista([...lista, enviaProduto]);
-  //   } catch (error) {
-  //     console.log("erro no post ", error);
-  //   }
-  // };
-
+  const editarItem = async (item: produto) => {
+    const itemEditado: produto = {
+      id: item.id,
+      nome: item.nome,
+      descricao: item.descricao,
+      image: item.image,
+      valor: item.valor,
+    };
+    try {
+      const itemApi = await updateProduto(itemEditado);
+      console.log(itemApi);
+      const ListaEditada = lista.map((item) => {
+        if (item.id == itemEditado.id) {
+          return itemEditado;
+        }
+        return item;
+      });
+    } catch (error) {
+      console.log("error no update.", error);
+    }
+  };
   useEffect(() => {
     const obterDados = async () => {
       setCarregamento(true);
       try {
-        setCarregamento(true)
+        setCarregamento(true);
         const listaProduto = await getProduto();
         console.log("DADOS: ", listaProduto);
         setLista(listaProduto);
@@ -82,17 +70,36 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
 
   return (
     <View style={style.container}>
-      <FlatList
-        data={lista}
-        renderItem={({ item }) => (
-          <View>
-            <CardProduto lista={item} deletarItem={deletarItem} />
-            <Button title="ir para pagina detalhes do produto" />
-            
-          </View>
-        )}
-        keyExtractor={(item) => item.id.toString()}
-      />
+      {carregamento ? (
+        <View>
+          <ActivityIndicator size="large" />
+        </View>
+      ) : (
+        <View>
+          <FlatList
+            data={lista}
+            renderItem={({ item }) => (
+              <View>
+                <CardProduto
+                  route={{ params: { lista: item } }}
+                  deletarItem={deletarItem}
+                  editarItem={editarItem}
+                />
+                <Button
+                  title="ir para pagina detalhes do produto"
+                  onPress={() =>
+                    navigation.navigate("CardProduto", {
+                      lista: item,
+                      editarItem: editarItem,
+                    })
+                  }
+                />
+              </View>
+            )}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        </View>
+      )}
     </View>
   );
 }
