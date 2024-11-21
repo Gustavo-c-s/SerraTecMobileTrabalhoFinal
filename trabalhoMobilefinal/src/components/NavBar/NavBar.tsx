@@ -1,16 +1,17 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { useFonts, Inter_400Regular } from '@expo-google-fonts/inter'
-import AppLoading from 'expo-app-loading';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import styles from './NavBarStyle'
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { useFonts, Inter_400Regular } from "@expo-google-fonts/inter";
+import AppLoading from "expo-app-loading";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import styles from "./NavBarStyle";
+import { NavBarProps } from "../../types/navigation";
 
-export default function NavBar() {
+export default function NavBar({navigation}:NavBarProps) {
   let [fontsLoaded] = useFonts({
-   Inter_400Regular
+    Inter_400Regular,
   });
 
   if (!fontsLoaded) {
@@ -19,13 +20,23 @@ export default function NavBar() {
     return (
       <View style={styles.containerPrincipal}>
         <View style={styles.containerNavbar}>
-          <Text style={styles.logo} >BEAR</Text>
+          <Text style={styles.logo}>BEAR</Text>
           <View style={styles.icones}>
-            <FontAwesome name="heart-o" size={19} color="black" />
-            <AntDesign name="adduser" size={19} color="black" />
-            <AntDesign name="deleteuser" size={19} color="black" />
-            <SimpleLineIcons name="bag" size={19} color="black" />
-            <MaterialCommunityIcons name="menu" size={19} color="black" />
+            <TouchableOpacity>
+              <FontAwesome name="heart-o" size={19} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <AntDesign name="adduser" size={19} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <AntDesign name="deleteuser" size={19} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Integrante")}>
+              <SimpleLineIcons name="bag" size={19} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <MaterialCommunityIcons name="menu" size={19} color="black" />
+            </TouchableOpacity>
           </View>
         </View>
       </View>

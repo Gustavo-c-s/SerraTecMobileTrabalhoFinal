@@ -8,7 +8,7 @@ import CadastrarProduto from "../components/CadastrarProdudos";
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   return (
     <View>
-      <CadastrarProduto/>
+      {/* <CadastrarProduto/> */}
       {/* <Login /> */}
       {/* <CadastraUsuario/> */}
       <View>

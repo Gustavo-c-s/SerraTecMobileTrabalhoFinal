@@ -29,10 +29,6 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
       valor: "250",
     },
   ]);
-  const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [valor, setValor] = useState("");
-  const [image, setImage] = useState("");
   const deletarItem = async (id: number | string) => {
     try {
       const enviandoApi = await deleteProduto(id);

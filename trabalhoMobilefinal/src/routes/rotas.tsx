@@ -5,6 +5,7 @@ import { StackParamList } from "../types/navigation";
 import VitriniScreem from "../screens/VitriniScreen";
 import IntegrantesScreen from "../screens/IntegrantesScreen";
 import CardProduto from "../components/CardProduto";
+import NavBar from "../components/NavBar/NavBar";
 // import NavBar from "../components/NavBar";
 
 const { Navigator, Screen } = createNativeStackNavigator<StackParamList>();
@@ -21,6 +22,7 @@ export const Rotas = () => {
         //  layout={NavBar}
       />
 
+      <Screen name="NavBar" component={NavBar} />
       <Screen name="Vitrini" component={VitriniScreem} />
       <Screen name="Integrante" component={IntegrantesScreen} />
       <Screen name="CardProduto" component={CardProduto} />

@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
 import { CardProdutoprops } from "../types/navigation";
 import Icon from "react-native-vector-icons/MaterialIcons"; // Se for usar ícones, pessoal
+import { Float } from "react-native/Libraries/Types/CodegenTypes";
 
 type CardProduto = {
   lista: {

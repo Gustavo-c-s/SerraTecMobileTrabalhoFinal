@@ -8,11 +8,7 @@ import {
 import React, { useState } from "react";
 import { InputProps } from "../types/types";
 
-type InputProps = {
-  label: string;
-  value: string;
-  setvalue: (value: string) => void;
-};
+
 
 export function InputTexto({ label, value, setvalue }: InputProps) {
   return (
@@ -55,7 +51,7 @@ export function InputSenha({ label, value, setvalue }: InputProps) {
 
 export function InputEmail({ label, value, setvalue }: InputProps) {
   return (
-    <View>
+    <View style={styles.conteiner}>
       <View>
         <Text style={styles.texto}>{label}</Text>
       </View>
@@ -72,12 +68,17 @@ export function InputEmail({ label, value, setvalue }: InputProps) {
 
 const styles = StyleSheet.create({
   texto: {
-    margin: 20,
-    fontSize: 35,
+    margin: 10,
+    fontSize: 20,
     textAlign: "center",
+  },
+  conteiner:{
+  
+  
   },
   input: {
     borderWidth: 1,
+    borderRadius:10,
     padding: 10,
   },
   toggleButton: {
