@@ -1,6 +1,6 @@
 import { View, FlatList, StyleSheet } from 'react-native'
 import React from 'react'
-import CardIntegrantes from '../components/CardIntegrantes'
+import CardIntegrantes from '../components/Cards/CardIntegrantes'
 import { dados } from '../components/dadoIntegrantes'; 
 export default function IntegrantesScreen() {
     

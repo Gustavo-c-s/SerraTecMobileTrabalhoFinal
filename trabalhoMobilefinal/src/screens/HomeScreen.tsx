@@ -1,14 +1,14 @@
-import { View, Button } from "react-native";
+import { View, Button , StyleSheet } from "react-native";
 import React from "react";
 import { HomeScreenProps } from "../types/navigation";
-import Login from "../components/Login";
-import CadastraUsuario from "../components/CadastraUsuario";
+import CadastraUsuario from "../components/Cards/CadastraUsuario";
+import Login from "../components/Login/Login";
 
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   return (
-    <View>
-      <Login />
-      {/* <CadastraUsuario/> */}
+    <View style={styles.containerPrincipal}>
+      <Login/>
+      <CadastraUsuario/>
       <View>
         <Button
           title="ir para Vitrini"
@@ -22,3 +22,10 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  containerPrincipal: {
+   flex:1,
+   marginTop:'10%',
+  },
+});

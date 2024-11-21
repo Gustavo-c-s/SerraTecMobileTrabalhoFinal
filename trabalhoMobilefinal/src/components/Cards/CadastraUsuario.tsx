@@ -1,7 +1,7 @@
 import { Alert, Button, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import { InputEmail, InputSenha, InputTexto } from "./Input";
-import { postUsuario } from "../services/usuarioService";
+import { InputEmail, InputSenha, InputTexto } from "../Input";
+import { postUsuario } from "../../services/usuarioService";
 
 export default function CadastraUsuario() {
   const [nome, setNome] = useState("");
@@ -44,16 +44,48 @@ export default function CadastraUsuario() {
     }
   };
   return (
-    <View >
-      <Text>Cadastrar</Text>
-      <InputTexto label="Nome: " value={nome} setvalue={setNome} />
-      <InputEmail label="Email: " value={email} setvalue={setEmail} />
-      <InputSenha label="Senha: " value={senha} setvalue={setSenha} />
-      <InputTexto label="Telefone: " value={telefone} setvalue={setTelefone} />
+    <View style={style.containerPrincipal} >
+      <Text style={style.Cadastro} >Cadastrar</Text>
+      <InputTexto styleTexto={style.texto} styleInput={style.input} label="Nome: " value={nome} setvalue={setNome} />
+      <InputEmail styleTexto={style.texto} styleInput={style.input} label="Email: " value={email} setvalue={setEmail} />
+      <InputSenha styleTexto={style.texto} styleInput={style.input} label="Senha: " value={senha} setvalue={setSenha} />
+      <InputTexto styleTexto={style.texto} styleInput={style.input} label="Telefone: " value={telefone} setvalue={setTelefone} />
       <Button title="Enviar" onPress={cadastrar} />
     </View>
   );
 }
 const style = StyleSheet.create({
- 
+  containerPrincipal:{
+    flex:1,
+    alignItems:'center',
+    alignSelf:'center',
+    
+   },
+   Cadastro:{
+    alignItems:'center',
+    justifyContent:'center',
+    color:'black',
+    fontFamily: 'Inter_400Regular',
+    fontWeight: 'thin',
+    fontSize: 25 ,
+    marginBottom:'4%',
+   },
+   texto:{
+    alignItems:'center',
+    justifyContent:'center',
+    color:'black',
+    fontFamily: 'Inter_400Regular',
+    fontWeight: 'thin',
+   },
+   input: {
+     justifyContent:'center',
+     alignContent:'center',
+     borderWidth: 1, 
+     padding: 10,
+     borderRadius: 10,
+     borderColor:'black',
+      width:'90%',
+      height:'10%',
+      // margin: '3%',
+      },
 });

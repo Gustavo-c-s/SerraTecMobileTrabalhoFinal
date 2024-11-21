@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
-import { CardProdutoprops } from "../types/navigation";
+import { CardProdutoprops } from "../../types/navigation";
 import { Float } from "react-native/Libraries/Types/CodegenTypes";
 
 type CardProduto= {

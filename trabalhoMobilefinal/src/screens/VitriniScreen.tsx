@@ -1,6 +1,6 @@
 import { View, FlatList, StyleSheet, Button } from "react-native";
 import React, { useEffect, useState } from "react";
-import CardProduto from "../components/CardProduto";
+import CardProduto from "../components/Cards/CardProduto";
 
 import { VitriniScreenProps } from "../types/navigation";
 import {
