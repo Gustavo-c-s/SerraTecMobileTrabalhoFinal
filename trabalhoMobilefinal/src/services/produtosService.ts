@@ -19,9 +19,11 @@ export const deleteProduto = async (id: number | string): Promise<produto> => {
 };
 
 export const updateProduto = async (
-  id: number | string,
-  produtoAtualizado: Omit<produto, "id">
+  produtoAtualizado: produto
 ): Promise<produto> => {
-  const { data } = await api.put(`/produtos/${id}`, produtoAtualizado);
+  const { data } = await api.put(
+    `/produtos/${produtoAtualizado.id}`,
+    produtoAtualizado
+  );
   return data;
 };

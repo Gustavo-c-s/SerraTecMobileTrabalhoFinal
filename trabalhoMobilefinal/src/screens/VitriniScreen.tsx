@@ -13,6 +13,7 @@ import {
   deleteProduto,
   getProduto,
   postProduto,
+  updateProduto,
 } from "../services/produtosService";
 import { produto } from "../types/types";
 
@@ -30,23 +31,27 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
     }
   };
 
-  // const addProduto = async () => {
-  //   if (nome == "" || descricao == "" || valor == "" || image == "") return;
-  //   const novoProduto = {
-  //     nome: nome,
-  //     descricao: descricao,
-  //     valor: valor,
-  //     image: image,
-  //   };
-  //   try {
-  //     const enviaProduto = postProduto(novoProduto);
-  //     console.log("post: ", enviaProduto);
-  //     setLista([...lista, enviaProduto]);
-  //   } catch (error) {
-  //     console.log("erro no post ", error);
-  //   }
-  // };
-
+  const editarItem = async () => {
+    const itemEditado: produto = {
+      id,
+      nome,
+      descricao,
+      image,
+      valor,
+    };
+    try {
+      const itemApi = await updateProduto(itemEditado);
+      console.log(itemApi);
+      const ListaEditada = lista.map((item) => {
+        if (item.id == itemEditado.id) {
+          return itemEditado;
+        }
+        return item;
+      });
+    } catch (error) {
+      console.log("error no update.", error);
+    }
+  };
   useEffect(() => {
     const obterDados = async () => {
       setCarregamento(true);
@@ -78,6 +83,7 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
                 <CardProduto
                   route={{ params: { lista: item } }}
                   deletarItem={deletarItem}
+                  editarItem={editarItem}
                 />
                 <Button
                   title="ir para pagina detalhes do produto"

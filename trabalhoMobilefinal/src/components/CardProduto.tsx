@@ -2,11 +2,14 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/MaterialIcons"; // Se for usar ícones, pessoal
 import { Float } from "react-native/Libraries/Types/CodegenTypes";
-import { CardProdutoprops} from "../types/navigation";
+import { CardProdutoprops } from "../types/navigation";
 
-
-export default function CardProduto({ deletarItem, route }: CardProdutoprops) {
-  const {lista}  = route.params // Para obter objeto "lista" da rota
+export default function CardProduto({
+  deletarItem,
+  editarItem,
+  route,
+}: CardProdutoprops) {
+  const { lista } = route.params; // Para obter objeto "lista" da rota
 
   return (
     <View style={style.container}>
@@ -16,6 +19,10 @@ export default function CardProduto({ deletarItem, route }: CardProdutoprops) {
       <Text>{lista.descricao} - Descrição</Text>
       <View>
         <TouchableOpacity onPress={() => deletarItem?.(lista.id)}>
+          <Icon name="delete" size={24} color="red" />
+          {/* // icone aqui */}
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => editarItem?.(lista.id)}>
           <Icon name="delete" size={24} color="red" />
           {/* // icone aqui */}
         </TouchableOpacity>
