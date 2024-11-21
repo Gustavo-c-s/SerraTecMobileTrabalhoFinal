@@ -4,7 +4,7 @@ export const dados = [
     nome: "Gustavo Cordeiro Santos",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS829hb_G-5yGtkcA0m1LqDuyZY22o4ZYpJiw&s",
-    frase: "Sou foda",
+    frase: "Tem café? quero café!!",
   },
   {
     id: "2",

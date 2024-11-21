@@ -76,13 +76,18 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
             renderItem={({ item }) => (
               <View>
                 <CardProduto
-                  route={{ params: { lista: item } }}
-                  deletarItem={deletarItem}
+                  route={{
+                    params: { lista: item },
+                    deletarItem:deletarItem ,
+                  }}
                 />
                 <Button
                   title="ir para pagina detalhes do produto"
                   onPress={() =>
-                    navigation.navigate("CardProduto", { lista: item })
+                    navigation.navigate("CardProduto", {
+                      lista: item,
+                      deletarItem:deletarItem,
+                    })
                   }
                 />
               </View>

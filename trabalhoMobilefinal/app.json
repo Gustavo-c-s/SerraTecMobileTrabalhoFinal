@@ -4,7 +4,7 @@
     "slug": "trabalhoMobilefinal",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/loading.gif",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {

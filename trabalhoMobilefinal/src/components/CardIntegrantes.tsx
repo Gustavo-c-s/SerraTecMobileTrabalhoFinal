@@ -11,13 +11,13 @@ type CardIntegrantesProps = {
 export default function CardIntegrantes({ lista }: CardIntegrantesProps) {
   return (
     <View style={style.container}>
-      <Text>{lista.nome} - Nome Integrande</Text>
+      <Text>{lista.nome}</Text>
       <Image
         style={style.box}
         source={{ uri: lista.image }}
         alt="foto pessoal do grupo"
       />
-      <Text>{lista.frase} - Frase</Text>
+      <Text>{lista.frase}</Text>
     </View>
   );
 }

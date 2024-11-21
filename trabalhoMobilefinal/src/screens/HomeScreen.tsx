@@ -10,6 +10,7 @@ import { HomeScreenProps } from "../types/navigation";
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   return (
     <View style={style.corpo}>
+     {/* <Login/> */}
       <View >
         <Button
           title="ir para Vitrini"

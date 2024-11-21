@@ -10,7 +10,7 @@ export default function CadastraUsuario() {
   const [telefone, setTelefone] = useState("");
   const [tipo, setTipo] = useState("");
 
-  const validarEmail = (email:string ):boolean => {
+  const validarEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
@@ -20,9 +20,9 @@ export default function CadastraUsuario() {
       return;
     }
     if (nome == "" || email == "" || senha == "" || telefone == "") {
-      Alert.alert('É necessario peencher todas as informações');
+      Alert.alert("É necessario peencher todas as informações");
       return;
-    };
+    }
     const novoCadastro = {
       nome: nome,
       email: email,
@@ -33,23 +33,23 @@ export default function CadastraUsuario() {
     try {
       const enviaUsuario = await postUsuario(novoCadastro);
       console.log("post: ", enviaUsuario);
-      Alert.alert('🎉Cadastro realizado com sucesso!!🎊');
-      setNome('');
-      setEmail('');
-      setSenha('');
-      setTelefone('');
-      setTipo('');
+      Alert.alert("🎉Cadastro realizado com sucesso!!🎊");
+      setNome("");
+      setEmail("");
+      setSenha("");
+      setTelefone("");
+      setTipo("");
     } catch (error) {
       console.log("erro no post ", error);
     }
   };
   return (
-    <View >
+    <View>
       <Text>Cadastrar</Text>
-      <InputTexto label="Nome: " value={nome} setvalue={setNome} />
-      <InputEmail label="Email: " value={email} setvalue={setEmail} />
-      <InputSenha label="Senha: " value={senha} setvalue={setSenha} />
-      <InputTexto label="Telefone: " value={telefone} setvalue={setTelefone} />
+      <InputTexto stylesText={style.texto} stylesinput={style.input} label="Nome: " value={nome} setvalue={setNome} />
+      <InputEmail stylesText={style.texto} stylesinput={style.input} label="Email: " value={email} setvalue={setEmail} />
+      <InputSenha stylesText={style.texto} stylesinput={style.input} label="Senha: " value={senha} setvalue={setSenha} />
+      <InputTexto stylesText={style.texto} stylesinput={style.input} label="Telefone: " value={telefone} setvalue={setTelefone} />
       <Button title="Enviar" onPress={cadastrar} />
     </View>
   );
@@ -57,5 +57,15 @@ export default function CadastraUsuario() {
 const style = StyleSheet.create({
   container: {
     flex: 0.1,
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius:10,
+    padding: 10,
+  },
+  texto: {
+    margin: 10,
+    fontSize: 10,
+    
   },
 });

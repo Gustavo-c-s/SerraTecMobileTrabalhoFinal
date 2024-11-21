@@ -18,6 +18,7 @@ export type StackParamList = {
       image: string;
       valor: string | Float;
     };
+  deletarItem: (id: string | number) => void;
   };
 };
 export type HomeNavigationProps = NativeStackNavigationProp<StackParamList, "Home">;
