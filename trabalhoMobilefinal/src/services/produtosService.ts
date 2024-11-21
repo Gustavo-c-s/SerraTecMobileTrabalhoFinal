@@ -18,3 +18,11 @@ export const deleteProduto = async (id: number | string): Promise<produto> => {
   const { data } = await api.delete("/produtos/" + id);
   return data;
 };
+
+export const updateProduto = async (
+  id: number | string,
+  produtoAtualizado: Omit<produto, "id">
+): Promise<produto> => {
+  const { data } = await api.put(`/produtos/${id}`, produtoAtualizado);
+  return data;
+};
