@@ -2,7 +2,6 @@
 import { produto } from "../types/types";
 import api from "./api";
 
-const URL = "";
 export const getProduto = async (): Promise<[produto]> => {
   const { data } = await api.get("/produtos");
   return data;

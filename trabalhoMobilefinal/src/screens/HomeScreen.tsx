@@ -12,14 +12,14 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
       {/* <Login /> */}
       {/* <CadastraUsuario/> */}
       <View>
-        <Button
+        {/* <Button
           title="ir para Vitrini"
           onPress={() => navigation.navigate("Vitrini")}
         />
         <Button
           title="ir para Integrante"
           onPress={() => navigation.navigate("Integrante")}
-        />
+        /> */}
       </View>
     </View>
   );
