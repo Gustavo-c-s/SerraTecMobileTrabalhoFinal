@@ -2,7 +2,7 @@ import { View, Text, Alert, ActivityIndicator } from "react-native";
 import { InputTexto } from "./Input";
 import { useState } from "react";
 import { Button } from "@react-navigation/elements";
-import { postProduto, deleteProduto } from "../services/produtosService";
+import { postProduto} from "../services/produtosService";
 import axios from "axios";
 
 export default function CadastrarProduto(){
