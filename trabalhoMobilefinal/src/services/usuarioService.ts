@@ -18,3 +18,11 @@ export const deleteUsuario = async (id: number): Promise<usuario> => {
   const { data } = await api.delete("/usuarios/" + id);
   return data;
 };
+
+export const updateUsuario = async (
+  id: number,
+  usuarioAtualizado: Omit<usuario, "id">
+): Promise<usuario> => {
+  const { data } = await api.put(`/usuarios/${id}`, usuarioAtualizado);
+  return data;
+};
