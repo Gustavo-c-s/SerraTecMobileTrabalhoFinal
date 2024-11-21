@@ -3,9 +3,9 @@ import React from "react";
 
 type CardIntegrantesProps = {
   lista: {
-    nome:string;
-    image:string;
-    frase:string;
+    nome: string;
+    image: string;
+    frase: string;
   };
 };
 export default function CardIntegrantes({ lista }: CardIntegrantesProps) {

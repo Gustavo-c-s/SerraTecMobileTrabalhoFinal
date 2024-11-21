@@ -8,6 +8,12 @@ import {
 import React, { useState } from "react";
 import { InputProps } from "../types/types";
 
+type InputProps = {
+  label: string;
+  value: string;
+  setvalue: (value: string) => void;
+};
+
 export function InputTexto({ label, value, setvalue }: InputProps) {
   return (
     <View>

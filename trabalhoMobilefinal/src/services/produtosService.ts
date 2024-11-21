@@ -1,4 +1,3 @@
-
 import { produto } from "../types/types";
 import api from "./api";
 
@@ -14,9 +13,7 @@ export const postProduto = async (
   return data;
 };
 
-export const deleteProduto = async (id: number|string): Promise<produto> => {
+export const deleteProduto = async (id: number | string): Promise<produto> => {
   const { data } = await api.delete("/produtos/" + id);
   return data;
 };
-
-
