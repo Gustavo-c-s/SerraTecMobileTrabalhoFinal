@@ -1,4 +1,10 @@
-import { View, FlatList, StyleSheet, Button } from "react-native";
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  Button,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import CardProduto from "../components/CardProduto";
 
@@ -60,11 +66,13 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
 
   useEffect(() => {
     const obterDados = async () => {
+      setCarregamento(true);
       try {
         setCarregamento(true)
         const listaProduto = await getProduto();
         console.log("DADOS: ", listaProduto);
         setLista(listaProduto);
+        setCarregamento(false);
       } catch (error) {
         console.log("error no get.", error);
       }
