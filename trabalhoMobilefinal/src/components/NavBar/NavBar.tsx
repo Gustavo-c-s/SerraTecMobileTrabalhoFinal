@@ -35,7 +35,7 @@ export default function NavBar() {
             <TouchableOpacity>
               <AntDesign name="deleteuser" size={19} color="black" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Integrante")}>
+            <TouchableOpacity >
               <SimpleLineIcons name="bag" size={19} color="black" />
             </TouchableOpacity>
             <TouchableOpacity>

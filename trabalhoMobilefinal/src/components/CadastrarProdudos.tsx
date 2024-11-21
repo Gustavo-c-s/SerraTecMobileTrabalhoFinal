@@ -47,7 +47,7 @@ export default function CadastrarProduto() {
         </View>
       ) : (
         <View>
-          <Text>Castro Produtos</Text>
+          <Text>Cadastro de Produtos</Text>
 
           <InputTexto 
           label="Nome Produto" 

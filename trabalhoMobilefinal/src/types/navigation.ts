@@ -34,7 +34,7 @@ export type IntegranteProps = {
 };
 export type CardProdutoprops = {
   navigation: NativeStackNavigationProp<StackParamList, "CardProduto">;
-  route: RouteProp<StackParamList, "CardProduto">;
+  route: Partial<RouteProp<StackParamList, "CardProduto">>;
   deletarItem?: (id: number | string) => void;
 };
 export type VitriniScreenProps = {
