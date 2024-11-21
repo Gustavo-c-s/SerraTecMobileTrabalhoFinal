@@ -2,12 +2,16 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 
 type CardIntegrantesProps = {
-  lista: undefined;
+  lista: {
+    nome: string;
+    image: string;
+    frase: string;
+  };
 };
 export default function CardIntegrantes({ lista }: CardIntegrantesProps) {
   return (
     <View style={style.container}>
-      <Text>{lista.name} - Nome Integrande</Text>
+      <Text>{lista.nome} - Nome Integrande</Text>
       <Image
         style={style.box}
         source={{ uri: lista.image }}
