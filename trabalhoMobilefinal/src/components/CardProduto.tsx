@@ -4,7 +4,7 @@ import { CardProdutoprops } from "../types/navigation";
 import Icon from "react-native-vector-icons/MaterialIcons"; // Se for usar ícones, pessoal
 import { Float } from "react-native/Libraries/Types/CodegenTypes";
 
-type CardProduto = {
+export type CardProduto = {
   lista: {
     id: string | number;
     nome: string;
@@ -14,8 +14,8 @@ type CardProduto = {
   };
   deletarItem: (id: number | string) => void;
 };
-export default function CardProduto({ deletarItem, route }: CardProdutoprops) {
-  const { lista } = route.params; // Para obter objeto "lista" da rota
+export default function CardProduto({ deletarItem, lista }: CardProduto) {
+  // const { lista } = route.params; // Para obter objeto "lista" da rota
 
   return (
     <View style={style.container}>
@@ -28,7 +28,8 @@ export default function CardProduto({ deletarItem, route }: CardProdutoprops) {
           <Text>➕</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => deletarItem?.(lista.id)}>
-          <Icon name="delete" size={24} color="red" /> // icone aqui
+          <Icon name="delete" size={24} color="red" /> 
+          {/* // icone aqui */}
         </TouchableOpacity>
       </View>
     </View>

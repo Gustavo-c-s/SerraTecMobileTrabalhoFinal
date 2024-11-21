@@ -4,7 +4,8 @@ import { Float } from "react-native/Libraries/Types/CodegenTypes";
 
 export type StackParamList = {
   Home: undefined;
-  NavBar:undefined;
+  Login: undefined;
+  NavBar: undefined;
   Vitrini: undefined;
   Integrante: undefined;
   CardProduto: {
@@ -22,14 +23,11 @@ export type HomeNavigationProps = NativeStackNavigationProp<
   "Home"
 >;
 
-export type HomeScreenProps = {
-  navigation: HomeNavigationProps;
-};
 export type NavBarProps = {
-  navigation:  NativeStackNavigationProp<StackParamList, "NavBar">;
+  navigation: NativeStackNavigationProp<StackParamList, "NavBar">;
 };
 export type IntegranteProps = {
-  navigation:  NativeStackNavigationProp<StackParamList, "Integrante">;
+  navigation: NativeStackNavigationProp<StackParamList, "Integrante">;
 };
 export type CardProdutoprops = {
   navigation: NativeStackNavigationProp<StackParamList, "CardProduto">;

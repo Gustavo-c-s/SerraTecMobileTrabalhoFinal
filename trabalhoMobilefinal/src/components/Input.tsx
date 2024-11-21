@@ -73,8 +73,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   conteiner:{
-  
-  
+   
   },
   input: {
     borderWidth: 1,

@@ -7,9 +7,13 @@ import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import styles from "./NavBarStyle";
-import { NavBarProps } from "../../types/navigation";
+import { NavBarProps, StackParamList } from "../../types/navigation";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export default function NavBar({navigation}:NavBarProps) {
+export default function NavBar() {
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
+
   let [fontsLoaded] = useFonts({
     Inter_400Regular,
   });
@@ -25,7 +29,7 @@ export default function NavBar({navigation}:NavBarProps) {
             <TouchableOpacity>
               <FontAwesome name="heart-o" size={19} color="black" />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
               <AntDesign name="adduser" size={19} color="black" />
             </TouchableOpacity>
             <TouchableOpacity>

@@ -29,6 +29,7 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
       valor: "250",
     },
   ]);
+  const [carregamento,setCarregamento]=useState(false);
   const deletarItem = async (id: number | string) => {
     try {
       const enviandoApi = await deleteProduto(id);
@@ -60,6 +61,7 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
   useEffect(() => {
     const obterDados = async () => {
       try {
+        setCarregamento(true)
         const listaProduto = await getProduto();
         console.log("DADOS: ", listaProduto);
         setLista(listaProduto);
@@ -78,6 +80,7 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
           <View>
             <CardProduto lista={item} deletarItem={deletarItem} />
             <Button title="ir para pagina detalhes do produto" />
+            
           </View>
         )}
         keyExtractor={(item) => item.id.toString()}
