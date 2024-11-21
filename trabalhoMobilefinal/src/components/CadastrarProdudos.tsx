@@ -1,11 +1,13 @@
-import { View, Text, Alert } from "react-native";
+import { View, Text, Alert, ActivityIndicator } from "react-native";
 import { InputTexto } from "./Input";
 import { useState } from "react";
 import { Button } from "@react-navigation/elements";
-import { postProduto, deleteProduto } from "../services/produtosService";
+import { postProduto} from "../services/produtosService";
 import axios from "axios";
 
 export default function CadastrarProduto(){
+
+    const [carregando, setCarregando] = useState(false)
 
     const [nome, setNome]=useState("")
     const [descricao, setDescricao]=useState("")
@@ -17,6 +19,7 @@ export default function CadastrarProduto(){
         Alert.alert("Favor verificar e preencher os campos corretamente!");
         return;
         }
+        setCarregando(true);
         const novoCadastro ={
             nome:nome,
             descricao:descricao,
@@ -25,27 +28,30 @@ export default function CadastrarProduto(){
         }
         try {
             const eviarProdutos = await postProduto(novoCadastro)
-            console.log('Post executado', eviarProdutos)
+            console.log('Produto cadastrado', eviarProdutos)
+            setCarregando(false)
+            Alert.alert('Cadastro realizado com sucesso!')
+            setNome('')
+            setDescricao('')
+            setValor('')
+            setImage('')
         } catch (error) {
             console.log('Erro post produto', error)
+
         }
         //console.log(nome, descricao,valor, image)
     }
-
-    // const apagarProduto = async (dele:number)=>{
-    //     try {
-    //         const apagarProduto = await deleteProduto(id:Number))
-    //         console.log("Produto: ", produto," apagado")
-            
-
-    //     } catch (error) {
-    //         console.log("Dados:", dados)
-    //     }
-    //     console.log("deletado")
-    // }
-
     return(
         <View>
+            {carregando? (
+                <View>
+                    <ActivityIndicator size="large"/>
+                </View>
+            ):(
+
+           
+            <View>
+
             <Text>Castro Produtos</Text>
             
             <InputTexto 
@@ -71,9 +77,9 @@ export default function CadastrarProduto(){
             value={image}
             setvalue={setImage}
             />
-            <Button onPressIn={cadastroProduto} >CADASTRAR PRODUDO</Button>
-           {/* <Button onPressIn={()=> apagarProduto(produto.id)}>APAGAR PRODUTO</Button> */}
-            
+            <Button onPressIn={cadastroProduto} >CADASTRAR PRODUDO</Button>    
             </View>
+             )}       
+     </View>
     )
 }
