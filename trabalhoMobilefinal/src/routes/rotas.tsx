@@ -1,14 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HomeScreen } from "../screens/HomeScreen";
 import { StackParamList } from "../types/navigation";
-
 import VitriniScreem from "../screens/VitriniScreen";
 import IntegrantesScreen from "../screens/IntegrantesScreen";
-import CardProduto from "../components/CardProduto";
+import CardProduto from "../components/Card/CardProduto";
+
+import CadastraUsuario from "../components/Cadastro/CadastraUsuario";
+import CadastrarProduto from "../components/Cadastro/CadastrarProdudos";
+import Login from "../components/Login/Login";
 import NavBar from "../components/NavBar/NavBar";
-import Login from "../components/Login";
-import CadastraUsuario from "../components/CadastraUsuario";
-import CadastrarProduto from "../components/CadastrarProdudos";
 // import NavBar from "../components/NavBar";
 
 const { Navigator, Screen } = createNativeStackNavigator<StackParamList>();

@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import CardProduto from "../components/CardProduto";
+import CardProduto from "../components/Card/CardProduto";
 
 import { VitriniScreenProps } from "../types/navigation";
 import {

@@ -17,10 +17,10 @@ export type usuario ={
     tipo: string,
 }
 export type InputProps={
-    stylesText: StyleProp<TextStyle>;
-    stylesinput: StyleProp<TextStyle>
+    styleTexto: StyleProp<TextStyle>;
+    styleInput: StyleProp<TextStyle>;
     label:string;
     value:string;
     setvalue:(value:string)=>void;
   
-}
+  }

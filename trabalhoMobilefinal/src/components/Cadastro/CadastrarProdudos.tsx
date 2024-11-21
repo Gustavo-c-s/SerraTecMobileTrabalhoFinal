@@ -1,8 +1,8 @@
 import { View, Text, Alert, ActivityIndicator, StyleSheet } from "react-native";
-import { InputTexto } from "./Input";
+import { InputTexto } from "../Input";
 import { useState } from "react";
 import { Button } from "@react-navigation/elements";
-import { postProduto } from "../services/produtosService";
+import { postProduto } from "../../services/produtosService";
 
 export default function CadastrarProduto() {
   const [carregando, setCarregando] = useState(false);

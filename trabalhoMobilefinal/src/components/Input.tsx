@@ -8,16 +8,14 @@ import {
 import React, { useState } from "react";
 import { InputProps } from "../types/types";
 
-
-
-export function InputTexto({ stylesText,stylesinput, label, value, setvalue }: InputProps) {
+export function InputTexto({ styleTexto, styleInput , label, value, setvalue }: InputProps) {
   return (
     <View>
       <View>
-        <Text style={stylesText}>{label}</Text>
+        <Text style={ styleTexto }>{label}</Text>
       </View>
       <TextInput
-        style={stylesinput}
+        style={ styleInput}
         value={value}
         onChangeText={setvalue}
         placeholder="Digite aqui..."
@@ -25,15 +23,15 @@ export function InputTexto({ stylesText,stylesinput, label, value, setvalue }: I
     </View>
   );
 }
-export function InputSenha({ stylesText,stylesinput, label, value, setvalue }: InputProps) {
+export function InputSenha({ styleTexto, styleInput , label, value, setvalue }: InputProps) {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   return (
     <View>
       <View>
-        <Text style={stylesText}>{label}</Text>
+        <Text style={styleTexto}>{label}</Text>
       </View>
       <TextInput
-        style={stylesinput}
+        style={styleInput}
         value={value}
         onChangeText={setvalue}
         placeholder="Digite aqui..."
@@ -49,14 +47,14 @@ export function InputSenha({ stylesText,stylesinput, label, value, setvalue }: I
   );
 }
 
-export function InputEmail({  stylesText,stylesinput,label, value, setvalue }: InputProps) {
+export function InputEmail({styleTexto, styleInput, label, value, setvalue }: InputProps) {
   return (
-    <View style={styles.conteiner}>
+    <View>
       <View>
-        <Text style={stylesText}>{label}</Text>
+        <Text style={styleTexto}>{label}</Text>
       </View>
       <TextInput
-        style={stylesinput}
+        style={styleInput}
         value={value}
         onChangeText={setvalue}
         placeholder="Digite aqui..."
@@ -67,20 +65,9 @@ export function InputEmail({  stylesText,stylesinput,label, value, setvalue }: I
 }
 
 const styles = StyleSheet.create({
-  texto: {
-    margin: 10,
-    fontSize: 20,
-    textAlign: "center",
-  },
-  conteiner:{
-   
-  },
-  input: {
-    borderWidth: 1,
-    borderRadius:10,
-    padding: 10,
-  },
-  toggleButton: {
-    padding: 10,
-  },
+  toggleButton:{
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection:'column',
+    },
 });

@@ -2,8 +2,8 @@ import { View, Button, StyleSheet } from "react-native";
 import React from "react";
 
 import Login from "../components/Login";
-import CadastraUsuario from "../components/CadastraUsuario";
-import CadastrarProduto from "../components/CadastrarProdudos";
+import CadastraUsuario from "../components/Cadastro/CadastraUsuario";
+import CadastrarProduto from "../components/Cadastro/CadastrarProdudos";
 import NavBar from "../components/NavBar/NavBar";
 import { HomeScreenProps } from "../types/navigation";
 

@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/MaterialIcons"; // Se for usar ícones, pessoal
-import { CardProdutoprops } from "../types/navigation";
+import { CardProdutoprops } from "../../types/navigation";
 
 export default function CardProduto({ deletarItem, route }: CardProdutoprops) {
   const { lista, editarItem } = route.params; // Para obter objeto "lista" da rota
