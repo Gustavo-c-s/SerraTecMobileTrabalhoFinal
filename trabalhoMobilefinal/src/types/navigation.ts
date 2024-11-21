@@ -18,6 +18,7 @@ export type StackParamList = {
       image: string;
       valor: string | Float;
     };
+    editarItem?: (lista: {}) => void;
   };
 };
 export type HomeNavigationProps = NativeStackNavigationProp<

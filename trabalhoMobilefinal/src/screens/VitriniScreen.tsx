@@ -31,13 +31,13 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
     }
   };
 
-  const editarItem = async () => {
+  const editarItem = async (item: produto) => {
     const itemEditado: produto = {
-      id,
-      nome,
-      descricao,
-      image,
-      valor,
+      id: item.id,
+      nome: item.nome,
+      descricao: item.descricao,
+      image: item.image,
+      valor: item.valor,
     };
     try {
       const itemApi = await updateProduto(itemEditado);
@@ -88,7 +88,10 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
                 <Button
                   title="ir para pagina detalhes do produto"
                   onPress={() =>
-                    navigation.navigate("CardProduto", { lista: item })
+                    navigation.navigate("CardProduto", {
+                      lista: item,
+                      editarItem: editarItem,
+                    })
                   }
                 />
               </View>
