@@ -107,8 +107,8 @@ const style = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     borderColor: "black",
-    width: "90%",
-    height: "10%",
+    width: 250,
+    height: 40,
     // margin: '3%',
   },
 });

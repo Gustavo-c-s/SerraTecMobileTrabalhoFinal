@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   containerPrincipal: {
-    flex: 1,
     backgroundColor:'white',
     // justifyContent: 'center',
     // alignItems: 'center',
@@ -26,8 +25,11 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent: 'space-between',
     gap:'2%',
-    paddingRight:'3%'
+    paddingRight:'3%',
   },
+  texto:{
+    fontWeight:'bold'
+  }
 });
 
 export default styles;

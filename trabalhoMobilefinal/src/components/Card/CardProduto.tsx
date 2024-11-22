@@ -1,10 +1,26 @@
-import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  Button,
+} from "react-native";
 import React from "react";
-import Icon from "react-native-vector-icons/MaterialIcons"; // Se for usar ícones, pessoal
-import { CardProdutoprops } from "../../types/navigation";
 
-export default function CardProduto({ deletarItem, route }: CardProdutoprops) {
-  const { lista, editarItem } = route.params; // Para obter objeto "lista" da rota
+import { CardProdutoprops } from "../../types/navigation";
+import { deleteProduto } from "../../services/produtosService";
+
+export default function CardProduto({ route, navigation }: CardProdutoprops) {
+  const { lista } = route.params; // Para obter objeto "lista" da rota
+  const deletarItem = async (id: number | string) => {
+    try {
+      const enviandoApi = await deleteProduto(id);
+      console.log("Deletar Tarefa. Id: ", id, enviandoApi);
+    } catch (error) {
+      console.log("error no delete.", error);
+    }
+  };
 
   return (
     <View style={style.container}>
@@ -12,16 +28,15 @@ export default function CardProduto({ deletarItem, route }: CardProdutoprops) {
       <Text>R${lista.valor}</Text>
       <Image style={style.box} source={{ uri: lista.image }} />
       <Text>{lista.descricao} </Text>
-      <View>
-        <TouchableOpacity onPress={() => deletarItem?.(lista.id)}>
-          <Icon name="delete" size={24} color="red" />
-          {/* // icone aqui */}
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => editarItem?.(lista)}>
-          <Text>EDITA PORRA</Text>
-          {/* // icone aqui */}
-        </TouchableOpacity>
-      </View>
+      <Button title="🗑" onPress={() => deletarItem(lista.id)} />
+      <Button
+        title="🖊"
+        onPress={() =>
+          navigation.navigate("Editarproduto", {
+            produto: lista,
+          })
+        }
+      />
     </View>
   );
 }

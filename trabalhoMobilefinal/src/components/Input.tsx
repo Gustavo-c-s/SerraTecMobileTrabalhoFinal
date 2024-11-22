@@ -12,7 +12,7 @@ export function InputTexto({ styleTexto, styleInput , label, value, setvalue }: 
   return (
     <View>
       <View>
-        <Text style={ styleTexto }>{label}</Text>
+        <Text >{label}</Text>
       </View>
       <TextInput
         style={ styleInput}

@@ -12,7 +12,6 @@ import { VitriniScreenProps } from "../types/navigation";
 import {
   deleteProduto,
   getProduto,
-  postProduto,
   updateProduto,
 } from "../services/produtosService";
 import { produto } from "../types/types";
@@ -34,8 +33,8 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
   const editarItem = async (item: produto) => {
     const itemEditado: produto = {
       id: item.id,
-      nome: item.nome,
-      descricao: item.descricao,
+      nome: "item.nome",
+      descricao: "item.descricao",
       image: item.image,
       valor: item.valor,
     };
@@ -52,19 +51,19 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
       console.log("error no update.", error);
     }
   };
-  useEffect(() => {
-    const obterDados = async () => {
+  const obterDados = async () => {
+    setCarregamento(true);
+    try {
       setCarregamento(true);
-      try {
-        setCarregamento(true);
-        const listaProduto = await getProduto();
-        console.log("DADOS: ", listaProduto);
-        setLista(listaProduto);
-        setCarregamento(false);
-      } catch (error) {
-        console.log("error no get.", error);
-      }
-    };
+      const listaProduto = await getProduto();
+      console.log("DADOS: ", listaProduto);
+      setLista(listaProduto);
+      setCarregamento(false);
+    } catch (error) {
+      console.log("error no get.", error);
+    }
+  };
+  useEffect(() => {
     obterDados();
   }, []);
 
@@ -80,17 +79,20 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
             data={lista}
             renderItem={({ item }) => (
               <View>
-                <CardProduto
-                  route={{ params: { lista: item } }}
-                  deletarItem={deletarItem}
-                  editarItem={editarItem}
+                <CardProduto route={{ params: { lista: item } }} />
+                <Button
+                  title="🖊"
+                  onPress={() =>
+                    navigation.navigate("Editarproduto", {
+                      produto: item,
+                    })
+                  }
                 />
                 <Button
                   title="ir para pagina detalhes do produto"
                   onPress={() =>
                     navigation.navigate("CardProduto", {
                       lista: item,
-                      editarItem: editarItem,
                     })
                   }
                 />
