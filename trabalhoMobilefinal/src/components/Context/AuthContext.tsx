@@ -1,21 +1,22 @@
 import { createContext, ReactNode, useState } from "react";
+import { produto, usuario } from "../../types/types";
 
 export const AuthContext = createContext<any>(undefined);
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [lista, setLista] = useState<produto[]>([]);
   const [user, setUser] = useState<any>(true);
 
-  const entrar = (email: string, senha: string) => {
-    if (email === "123@gmail.com" && senha === "123")
-      setUser("Informações do usuario");
-    
+  const entrar = (usuario:usuario) => {
+    if (usuario)
+      setUser(usuario); 
   };
   const logout = () => {
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ entrar, logout, online: !!user }}>
+    <AuthContext.Provider value={{ entrar, logout, online: !!user ,user,lista,setLista}}>
       {children}
     </AuthContext.Provider>
   );

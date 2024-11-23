@@ -5,7 +5,8 @@ import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import styles from "./NavBarStyle";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../../components/Context/AuthContext";
+
 
 export default function NavBar() {
   const { online, logout } = useContext(AuthContext);

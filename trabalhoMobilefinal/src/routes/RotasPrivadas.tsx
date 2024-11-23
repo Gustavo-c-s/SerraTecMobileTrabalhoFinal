@@ -3,14 +3,12 @@ import { HomeScreen } from "../screens/HomeScreen";
 import { StackParamList } from "../types/navigation";
 import VitriniScreem from "../screens/VitriniScreen";
 import IntegrantesScreen from "../screens/IntegrantesScreen";
-import CardProduto from "../components/Card/CardProduto";
+import CardProduto from "../screens/CardScreens/CardProduto";
 
-import CadastraUsuario from "../components/Cadastro/CadastraUsuario";
-import CadastrarProduto from "../components/Cadastro/CadastrarProdudos";
 
-import NavBar from "../components/NavBar/NavBar";
-import EditarProduto from "../components/Editar/EditarProduto";
-import EditarUsuario from "../components/Editar/EditarUsuario";
+import CadastrarProduto from "../screens/CadastroScreens/CadastrarProdudos";
+import EditarProduto from "../screens/EditarScreens/EditarProduto";
+import EditarUsuario from "../screens/EditarScreens/EditarUsuario";
 // import NavBar from "../components/NavBar";
 
 const { Navigator, Screen } = createNativeStackNavigator<StackParamList>();

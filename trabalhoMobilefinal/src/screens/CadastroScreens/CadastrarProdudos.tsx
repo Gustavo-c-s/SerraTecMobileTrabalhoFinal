@@ -1,12 +1,14 @@
-import { View, Text, Alert, ActivityIndicator, StyleSheet } from "react-native";
-import { InputTexto } from "../Input";
-import { useState } from "react";
+import { View, Text, Alert, ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
+
+import { useContext, useState } from "react";
 import { Button } from "@react-navigation/elements";
 import { postProduto } from "../../services/produtosService";
+import { InputTexto } from "../../components/Input";
+import { AuthContext } from "../../components/Context/AuthContext";
 
 export default function CadastrarProduto() {
   const [carregando, setCarregando] = useState(false);
-
+  const {lista,setLista}=useContext(AuthContext)
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [valor, setValor] = useState("");
@@ -29,6 +31,7 @@ export default function CadastrarProduto() {
       console.log("Produto cadastrado", eviarProdutos);
       setCarregando(false);
       Alert.alert("Cadastro realizado com sucesso!");
+      setLista([...lista,eviarProdutos])
       setNome("");
       setDescricao("");
       setValor("");
@@ -39,50 +42,95 @@ export default function CadastrarProduto() {
     //console.log(nome, descricao,valor, image)
   };
   return (
-    <View>
+    <View style={style.containerPrincipal}>
       {carregando ? (
         <View>
           <ActivityIndicator size="large" />
         </View>
       ) : (
-        <View>
-          <Text>Cadastro de Produtos</Text>
+        <View style={style.containerPrincipal}>
+          <Text style={style.Cadastro}>Cadastro de Produtos</Text>
 
           <InputTexto
-            // stylesText={}
-            // stylesinput={}
+            styleTexto={style.texto}
+            styleInput={style.input}
             label="Nome Produto"
             value={nome}
             setvalue={setNome}
           />
 
           <InputTexto
-            // stylesText={}
-            // stylesinput={}
+           styleTexto={style.texto}
+           styleInput={style.input}
             label="Descrição"
             value={descricao}
             setvalue={setDescricao}
           />
 
           <InputTexto
-            // stylesText={}
-            // stylesinput={}
+            styleTexto={style.texto}
+            styleInput={style.input}
             label="Preço"
             value={valor}
             setvalue={setValor}
           />
 
           <InputTexto
-            // stylesText={}
-            // stylesinput={}
+            styleTexto={style.texto}
+            styleInput={style.input}
             label="Imagen"
             value={image}
             setvalue={setImage}
           />
-          <Button onPressIn={cadastroProduto}>CADASTRAR PRODUDO</Button>
+          <TouchableOpacity style={style.bnt} onPressIn={cadastroProduto}>
+            <Text style={style.texto}>CADASTRAR PRODUDO</Text>
+          </TouchableOpacity>
+         
         </View>
       )}
     </View>
   );
 }
-const style = StyleSheet.create({});
+const style = StyleSheet.create({
+
+  Cadastro: {
+    color: "black",
+    fontFamily: "Inter_400Regular",
+    fontWeight: "thin",
+    fontSize: 25,
+    marginBottom: "4%",
+    alignSelf: "center",
+  },
+  containerPrincipal: {
+    flex: 1,
+    padding: 20,
+    backgroundColor:'#b79e91'
+  },
+  texto: {
+    fontSize: 15,
+    color: "black",
+    fontFamily: "Inter_400Regular",
+    textAlign:'center'
+    
+  },
+  input: {
+    alignSelf: "center",
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 10,
+    borderColor: "black",
+    width: 250,
+    height: 40,
+    margin: "3%",
+    fontSize: 15,
+    color: "#000000",
+  },
+  bnt:{
+    alignSelf:'center',
+    width:200,
+    borderRadius:10,
+    borderWidth:2,
+    backgroundColor:"#ebe5e5",
+    marginTop:20
+  }
+});

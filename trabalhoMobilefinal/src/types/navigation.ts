@@ -1,6 +1,5 @@
 import { RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Float } from "react-native/Libraries/Types/CodegenTypes";
 import { produto, usuario } from "./types";
 
 export type StackParamList = {
@@ -12,7 +11,7 @@ export type StackParamList = {
   Cadastrousuario: undefined;
   Cadastroproduto: undefined;
   CardProduto: {
-    lista: produto   
+    item: produto   
   };
   Editarproduto:{
     produto:produto
@@ -41,15 +40,15 @@ export type IntegranteProps = {
 };
 export type CardProdutoprops = {
   navigation: NativeStackNavigationProp<StackParamList, "CardProduto">;
-  route: Partial<RouteProp<StackParamList, "CardProduto">>;
+  route: RouteProp<StackParamList, "CardProduto">;
 };
 export type Editarprodutoprops = {
-  navigation: NativeStackNavigationProp<StackParamList, "CardProduto">;
-  route: Partial<RouteProp<StackParamList, "CardProduto">>;
+  navigation: NativeStackNavigationProp<StackParamList, "Editarproduto">;
+  route: RouteProp<StackParamList, "Editarproduto">;
 };
 export type Editarusuarioprops = {
-  navigation: NativeStackNavigationProp<StackParamList, "CardProduto">;
-  route: Partial<RouteProp<StackParamList, "CardProduto">>;
+  navigation: NativeStackNavigationProp<StackParamList, "Editarusuario">;
+  route: Partial<RouteProp<StackParamList, "Editarusuario">>;
 };
 export type VitriniScreenProps = {
   navigation: NativeStackNavigationProp<StackParamList, "Vitrini">;

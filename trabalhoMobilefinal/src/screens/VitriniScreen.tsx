@@ -5,52 +5,17 @@ import {
   Button,
   ActivityIndicator,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import CardProduto from "../components/Card/CardProduto";
+import React, { useContext, useEffect, useState } from "react";
+import CardProduto from "./CardScreens/CardProduto";
 
 import { VitriniScreenProps } from "../types/navigation";
-import {
-  deleteProduto,
-  getProduto,
-  updateProduto,
-} from "../services/produtosService";
-import { produto } from "../types/types";
+import { getProduto } from "../services/produtosService";
+
+import { AuthContext } from "../components/Context/AuthContext";
 
 export default function VitriniScreem({ navigation }: VitriniScreenProps) {
-  const [lista, setLista] = useState<produto[]>([]);
+  const {lista, setLista} = useContext(AuthContext);
   const [carregamento, setCarregamento] = useState(false);
-  const deletarItem = async (id: number | string) => {
-    try {
-      const enviandoApi = await deleteProduto(id);
-      console.log("Deletar Tarefa. Id: ", id);
-      const listaFiltrada = lista.filter((item) => item.id !== enviandoApi.id);
-      setLista(listaFiltrada);
-    } catch (error) {
-      console.log("error no delete.", error);
-    }
-  };
-
-  const editarItem = async (item: produto) => {
-    const itemEditado: produto = {
-      id: item.id,
-      nome: "item.nome",
-      descricao: "item.descricao",
-      image: item.image,
-      valor: item.valor,
-    };
-    try {
-      const itemApi = await updateProduto(itemEditado);
-      console.log(itemApi);
-      const ListaEditada = lista.map((item) => {
-        if (item.id == itemEditado.id) {
-          return itemEditado;
-        }
-        return item;
-      });
-    } catch (error) {
-      console.log("error no update.", error);
-    }
-  };
   const obterDados = async () => {
     setCarregamento(true);
     try {
@@ -79,20 +44,15 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
             data={lista}
             renderItem={({ item }) => (
               <View>
-                <CardProduto route={{ params: { lista: item } }} />
-                <Button
-                  title="🖊"
-                  onPress={() =>
-                    navigation.navigate("Editarproduto", {
-                      produto: item,
-                    })
-                  }
+                <CardProduto
+                  route={{ params: { item: item } }}
+                  navigation={navigation}
                 />
                 <Button
                   title="ir para pagina detalhes do produto"
                   onPress={() =>
                     navigation.navigate("CardProduto", {
-                      lista: item,
+                      item: item,
                     })
                   }
                 />

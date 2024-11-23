@@ -1,15 +1,20 @@
 import { Button, StyleSheet, View } from "react-native";
 import React, { useContext, useState } from "react";
-import { InputEmail, InputSenha } from "../Input";
-import { AuthContext } from "../Context/AuthContext";
-import { LoginProps } from "../../types/navigation";
+import { InputEmail, InputSenha } from "../components/Input";
+import { AuthContext } from "../components/Context/AuthContext";
+import { LoginProps } from "../types/navigation";
+import { getUsuraioLogin } from "../services/usuarioService";
 
 export default function Login({navigation}:LoginProps) {
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
   const { entrar } = useContext(AuthContext);
-  const fazerLogin = () => {
-    console.log(login, senha);
+  const fazerLogin = async (login:string,senha:string) => {
+    const usuarios = await getUsuraioLogin(login,senha)
+    if(usuarios[0]){
+      entrar(usuarios[0])
+    }
+    console.log(usuarios);
   };
 
   return (
@@ -28,7 +33,7 @@ export default function Login({navigation}:LoginProps) {
         value={senha}
         setvalue={setSenha}
       />
-      <Button title="Entra" onPress={() => entrar(login, senha)} />
+      <Button title="Entra" onPress={() => fazerLogin(login, senha)} />
       <Button
         title="Cria Conta"
         onPress={() => navigation.navigate("Cadastrousuario")}

@@ -11,7 +11,7 @@ type CardIntegrantesProps = {
 export default function CardIntegrantes({ lista }: CardIntegrantesProps) {
   return (
     <View style={style.container}>
-      <Text>{lista.nome}</Text>
+      <Text >{lista.nome}</Text>
       <Image
         style={style.box}
         source={{ uri: lista.image }}
@@ -24,8 +24,11 @@ export default function CardIntegrantes({ lista }: CardIntegrantesProps) {
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems:'center',
+    
   },
   box: {
+    borderRadius:100,
     height: 200,
     width: 200,
   },

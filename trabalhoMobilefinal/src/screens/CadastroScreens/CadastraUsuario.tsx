@@ -1,7 +1,8 @@
 import { Alert, Button, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import { InputEmail, InputSenha, InputTexto } from "../Input";
+
 import { postUsuario } from "../../services/usuarioService";
+import { InputEmail, InputSenha, InputTexto } from "../../components/Input";
 
 export default function CadastraUsuario() {
   const [nome, setNome] = useState("");
@@ -53,7 +54,7 @@ export default function CadastraUsuario() {
         value={nome}
         setvalue={setNome}
       />
-      <InputEmail
+      <InputEmail 
         styleTexto={style.texto}
         styleInput={style.input}
         label="Email: "
@@ -109,6 +110,5 @@ const style = StyleSheet.create({
     borderColor: "black",
     width: 250,
     height: 40,
-    // margin: '3%',
   },
 });
