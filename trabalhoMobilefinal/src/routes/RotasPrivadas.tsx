@@ -4,11 +4,10 @@ import { StackParamList } from "../types/navigation";
 import VitriniScreem from "../screens/VitriniScreen";
 import IntegrantesScreen from "../screens/IntegrantesScreen";
 import CardProduto from "../screens/CardScreens/CardProduto";
-
-
 import CadastrarProduto from "../screens/CadastroScreens/CadastrarProdudos";
 import EditarProduto from "../screens/EditarScreens/EditarProduto";
 import EditarUsuario from "../screens/EditarScreens/EditarUsuario";
+import DrawerNavigator from "./DrawerNavigation";
 // import NavBar from "../components/NavBar";
 
 const { Navigator, Screen } = createNativeStackNavigator<StackParamList>();
@@ -18,7 +17,7 @@ export const RotasPrivadas = () => {
     <Navigator>
       <Screen
         name="Home"
-        component={HomeScreen}
+        component={DrawerNavigator}
         options={{
           headerShown: false,
         }}
@@ -31,7 +30,7 @@ export const RotasPrivadas = () => {
       }}/>
       
       
-      <Screen name="Vitrini" component={VitriniScreem} />
+      <Screen name="Vitrini" component={DrawerNavigator} />
       <Screen name="Integrante" component={IntegrantesScreen} 
       options={{
         headerTitle:'KND - A Turma do Bairro'

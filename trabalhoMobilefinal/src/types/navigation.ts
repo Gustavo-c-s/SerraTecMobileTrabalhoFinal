@@ -3,7 +3,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { produto, usuario } from "./types";
 
 export type StackParamList = {
-  Home: undefined;
+  Home: { userId: string };
   Login: undefined;
   NavBar: undefined;
   Vitrini: undefined;
@@ -51,6 +51,33 @@ export type Editarusuarioprops = {
   route: Partial<RouteProp<StackParamList, "Editarusuario">>;
 };
 export type VitriniScreenProps = {
+  Home: undefined; 
+  Vitrini: undefined; 
   navigation: NativeStackNavigationProp<StackParamList, "Vitrini">;
   route: RouteProp<StackParamList, "Vitrini">;
+};
+
+// Rotas do Drawer
+export type DrawerParamList = {
+  HomeScreen: undefined;
+  IntegrantesScreen: undefined;
+  VitriniScreen: undefined;
+  Login: undefined;
+  CadastrarProduto:undefined;
+  CadastraUsuario:undefined;
+  EditarUsuario:undefined;
+  
+};
+
+// Rotas do Bottom Tabs
+export type BottomTabsParamList = {
+  HomeScreen: undefined;
+  IntegrantesScreen: undefined;
+  VitriniScreen: undefined;
+  Login: undefined;
+};
+
+// Rotas do Stack de Login
+export type LoginStackParamList = {
+  Login: undefined;
 };
