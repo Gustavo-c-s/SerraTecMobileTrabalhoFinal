@@ -83,7 +83,7 @@ export default function CadastrarProduto() {
             setvalue={setImage}
           />
           <TouchableOpacity style={style.bnt} onPressIn={cadastroProduto}>
-            <Text style={style.texto}>CADASTRAR</Text>
+            <Text style={style.textobnt}>Cadastrar</Text>
           </TouchableOpacity>
          
         </View>
@@ -100,15 +100,16 @@ const style = StyleSheet.create({
     fontSize: 25,
     marginBottom: "4%",
     alignSelf: "center",
+    
   },
   containerPrincipal: {
     flex: 1,
     padding: 20,
-   
+    backgroundColor:'white',
   },
   texto: {
-    fontSize: 15,
-    color: "black",
+    fontSize: 14,
+    color: "white",
     fontFamily: "Inter_400Regular",
     textAlign:'center'
     
@@ -127,12 +128,18 @@ const style = StyleSheet.create({
   },
   bnt:{
     alignSelf:'center',
-    width:'auto',
-    height:40,
+    width:96,
+    height:39,
     borderRadius:10,
     borderWidth:2,
-    backgroundColor:"#ebe5e5",
+    backgroundColor:"black",
     marginTop:20,
     padding:5
-  }
+  },
+  textobnt: {
+    fontSize: 15,
+    color: "white",
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
+  },
 });

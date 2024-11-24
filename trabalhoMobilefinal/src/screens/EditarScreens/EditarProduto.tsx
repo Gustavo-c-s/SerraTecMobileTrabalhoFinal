@@ -90,7 +90,7 @@ export default function EditarProduto({ route }: Editarprodutoprops) {
             styleTexto={style.texto}
           />
           <TouchableOpacity style={style.bnt} onPress={editarItem}>
-            <Text style={style.texto}>Salvar</Text>
+            <Text style={style.textobnt}>Salvar</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -100,12 +100,14 @@ export default function EditarProduto({ route }: Editarprodutoprops) {
 const style = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
-    padding: 40,
+    padding: 34,
+    backgroundColor:'white',
   },
   texto: {
     fontSize: 15,
     color: "black",
     fontFamily: "Inter_400Regular",
+    // fontWeight:'bold',
     textAlign: "center",
   },
   input: {
@@ -122,10 +124,17 @@ const style = StyleSheet.create({
   },
   bnt: {
     alignSelf: "center",
-    width: 70,
+    width: 80,
+    height:30,
     borderRadius: 10,
     borderWidth: 2,
-    backgroundColor: "#ebe5e5",
+    backgroundColor: "#000",
     marginTop: 20,
+  },
+  textobnt: {
+    fontSize: 14,
+    color: "white",
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
   },
 });

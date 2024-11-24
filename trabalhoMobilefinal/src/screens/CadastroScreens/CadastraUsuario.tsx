@@ -94,7 +94,7 @@ export default function CadastraUsuario() {
             setvalue={setTelefone}
           />
           <TouchableOpacity style={style.bnt} onPressIn={cadastrar}>
-            <Text style={style.texto}>CADASTRAR</Text>
+            <Text style={style.textobnt}>Cadastrar</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -105,14 +105,14 @@ const style = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
     alignItems: "center",
-    alignSelf: "center",
+    backgroundColor:'white',
   },
   Cadastro: {
     marginTop: 50,
     alignSelf: "center",
     color: "black",
     fontFamily: "Inter_400Regular",
-    fontWeight: "thin",
+    fontWeight: "bold",
     fontSize: 25,
     marginBottom: "4%",
   },
@@ -136,11 +136,18 @@ const style = StyleSheet.create({
   },
   bnt: {
     alignSelf: "center",
-    width: "auto",
-    height: 40,
+    paddingTop:5,
+    width: 90,
+    height: 38,
     borderRadius: 10,
     borderWidth: 2,
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#000",
     marginTop: 20,
+  },
+  textobnt: {
+    fontSize: 14,
+    color: "white",
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
   },
 });

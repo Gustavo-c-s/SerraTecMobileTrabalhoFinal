@@ -19,6 +19,7 @@ export default function IntegrantesScreen() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'white',
   },
   flast:{
     marginTop:40

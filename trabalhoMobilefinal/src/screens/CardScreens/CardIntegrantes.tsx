@@ -11,13 +11,13 @@ type CardIntegrantesProps = {
 export default function CardIntegrantes({ lista }: CardIntegrantesProps) {
   return (
     <View style={style.container}>
-      <Text >{lista.nome}</Text>
+      <Text style={style.texto}>{lista.nome}</Text>
       <Image
         style={style.box}
         source={{uri:lista.image}}
         alt="foto pessoal do grupo"
       />
-      <Text>{lista.frase}</Text>
+      <Text style={style.frase}>{lista.frase}</Text>
     </View>
   );
 }
@@ -25,13 +25,27 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems:'center',
-    paddingBottom:40
+    paddingBottom:40,
+    backgroundColor:'white',
     
   },
   box: {
     borderRadius:100,
-    height: 200,
-    width: 200,
+    height: 180,
+    width: 180,
     margin:20
+  },
+  texto: {
+    color: "black",
+    textAlign: "center",
+    fontFamily: "Inter_400Regular",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  frase: {
+    color: "black",
+    textAlign: "center",
+    fontFamily: "Inter_400Regular",
+    fontSize: 14,
   },
 });

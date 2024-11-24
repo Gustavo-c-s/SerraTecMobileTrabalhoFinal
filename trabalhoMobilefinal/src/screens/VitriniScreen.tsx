@@ -81,7 +81,7 @@ const style = StyleSheet.create({
     borderRadius: 5,
     padding: 0,
     width: 100,
-    height: 50,
+    height: 45,
     marginHorizontal: 40,
     marginVertical: 30,
     alignSelf: "center",
