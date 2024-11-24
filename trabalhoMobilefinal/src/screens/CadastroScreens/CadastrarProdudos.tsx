@@ -49,12 +49,12 @@ export default function CadastrarProduto() {
         </View>
       ) : (
         <View style={style.containerPrincipal}>
-          <Text style={style.Cadastro}>Cadastro de Produtos</Text>
+          <Text style={style.Cadastro}>Cadastro de Produto</Text>
 
           <InputTexto
             styleTexto={style.texto}
             styleInput={style.input}
-            label="Nome Produto"
+            label="Nome do Produto:"
             value={nome}
             setvalue={setNome}
           />
@@ -62,7 +62,7 @@ export default function CadastrarProduto() {
           <InputTexto
            styleTexto={style.texto}
            styleInput={style.input}
-            label="Descrição"
+            label="Descrição:"
             value={descricao}
             setvalue={setDescricao}
           />
@@ -70,7 +70,7 @@ export default function CadastrarProduto() {
           <InputTexto
             styleTexto={style.texto}
             styleInput={style.input}
-            label="Preço"
+            label="Preço:"
             value={valor}
             setvalue={setValor}
           />
@@ -78,12 +78,12 @@ export default function CadastrarProduto() {
           <InputTexto
             styleTexto={style.texto}
             styleInput={style.input}
-            label="Imagen"
+            label="Imagen:"
             value={image}
             setvalue={setImage}
           />
           <TouchableOpacity style={style.bnt} onPressIn={cadastroProduto}>
-            <Text style={style.texto}>CADASTRAR PRODUDO</Text>
+            <Text style={style.texto}>CADASTRAR</Text>
           </TouchableOpacity>
          
         </View>
@@ -104,7 +104,7 @@ const style = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
     padding: 20,
-    backgroundColor:'#b79e91'
+   
   },
   texto: {
     fontSize: 15,
@@ -127,10 +127,12 @@ const style = StyleSheet.create({
   },
   bnt:{
     alignSelf:'center',
-    width:200,
+    width:'auto',
+    height:40,
     borderRadius:10,
     borderWidth:2,
     backgroundColor:"#ebe5e5",
-    marginTop:20
+    marginTop:20,
+    padding:5
   }
 });

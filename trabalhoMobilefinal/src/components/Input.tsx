@@ -12,7 +12,7 @@ export function InputTexto({ styleTexto, styleInput , label, value, setvalue }: 
   return (
     <View>
       <View>
-        <Text >{label}</Text>
+        <Text style={styleTexto}>{label}</Text>
       </View>
       <TextInput
         style={ styleInput}
@@ -69,5 +69,8 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     flexDirection:'column',
+    position:'absolute',
+    top:50,
+    left:220
     },
 });

@@ -1,38 +1,30 @@
-import { View, Button, StyleSheet } from "react-native";
-import React, { useContext } from "react";
+import { View, StyleSheet } from "react-native";
+import { useContext } from "react";
 import { HomeScreenProps } from "../types/navigation";
 import VitriniScreem from "./VitriniScreen";
 import { AuthContext } from "../components/Context/AuthContext";
 
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
-  const {user}=useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <View style={style.corpo}>
-     {/* <Login/> */}
-       <VitriniScreem navigation={navigation}/>
-      <View >
-        <Button
-          title="ir para Integrante"
-          onPress={() => navigation.navigate("Integrante")}
-        />
-        <Button
-          title="Cadastro produto"
-          onPress={() => navigation.navigate("Cadastroproduto")}
-        />
-      </View>
-        <Button
-          title="editar usuario"
-          onPress={() => navigation.navigate("Editarusuario",{usuario:user})}
-        />
-      
+      <VitriniScreem navigation={navigation} />
     </View>
   );
 };
 const style = StyleSheet.create({
   corpo: {
     flex: 1,
-    textAlign:'center',
-    alignSelf:'center'
+    alignItems: "center",
+    justifyContent: "center",
   },
 
+  butoes: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    marginBottom: 29,
+    gap: 10,
+    overflow: "hidden",
+  },
 });

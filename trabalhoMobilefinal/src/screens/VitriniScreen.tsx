@@ -4,6 +4,8 @@ import {
   StyleSheet,
   Button,
   ActivityIndicator,
+  TouchableOpacity,
+  Text,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import CardProduto from "./CardScreens/CardProduto";
@@ -14,8 +16,9 @@ import { getProduto } from "../services/produtosService";
 import { AuthContext } from "../components/Context/AuthContext";
 
 export default function VitriniScreem({ navigation }: VitriniScreenProps) {
-  const {lista, setLista} = useContext(AuthContext);
-  const [carregamento, setCarregamento] = useState(false);
+  const { lista, setLista, carregamento, setCarregamento } =
+    useContext(AuthContext);
+
   const obterDados = async () => {
     setCarregamento(true);
     try {
@@ -41,6 +44,7 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
       ) : (
         <View>
           <FlatList
+            style={style.flast}
             data={lista}
             renderItem={({ item }) => (
               <View>
@@ -48,14 +52,16 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
                   route={{ params: { item: item } }}
                   navigation={navigation}
                 />
-                <Button
-                  title="ir para pagina detalhes do produto"
+                <TouchableOpacity
+                  style={style.touchable}
                   onPress={() =>
                     navigation.navigate("CardProduto", {
                       item: item,
                     })
                   }
-                />
+                >
+                  <Text style={style.buttonText}>Produto</Text>
+                </TouchableOpacity>
               </View>
             )}
             keyExtractor={(item) => item.id.toString()}
@@ -68,5 +74,27 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
+  },
+  touchable: {
+    backgroundColor: "black",
+    borderRadius: 5,
+    padding: 0,
+    width: 100,
+    height: 50,
+    marginHorizontal: 40,
+    marginVertical: 30,
+    alignSelf: "center",
+  },
+  buttonText: {
+    fontFamily: "Inter_400Regular",
+    fontWeight: 600,
+    color: "white",
+    textAlign: "center",
+    paddingTop: 10,
+    fontSize: 16,
+  },
+  flast: {
+    marginTop: 40,
   },
 });

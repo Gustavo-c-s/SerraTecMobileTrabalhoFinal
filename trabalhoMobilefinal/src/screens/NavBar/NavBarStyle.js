@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems:'center',
     justifyContent: 'space-between',
-    gap:'2%',
-    paddingRight:'3%',
+   // gap:'2%',
+    paddingRight:'5%',
   },
   texto:{
     fontWeight:'bold'

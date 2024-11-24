@@ -1,4 +1,11 @@
-import { View, Button, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Button,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
 import React, { useContext, useState } from "react";
 import { Editarprodutoprops } from "../../types/navigation";
 import { updateProduto } from "../../services/produtosService";
@@ -13,9 +20,15 @@ export default function EditarProduto({ route }: Editarprodutoprops) {
   const [descricao, setDescricao] = useState("");
   const [valor, setValor] = useState("");
   const [image, setImage] = useState("");
-  const { lista, setLista } = useContext(AuthContext);
+  const { lista, setLista, carregamento, setCarregamento } =
+    useContext(AuthContext);
   const editarItem = async () => {
-    const itemEditado = {
+    if (nome == "" || descricao == "" || valor == "" || image == "") {
+      Alert.alert("Favor verificar e preencher os campos corretamente!");
+      return;
+    }
+    setCarregamento(true);
+    const itemEditado: produto = {
       id: produto.id,
       nome: nome,
       descricao: descricao,
@@ -29,6 +42,12 @@ export default function EditarProduto({ route }: Editarprodutoprops) {
         i.id === itemApi.id ? itemApi : i
       );
       setLista(novaLista);
+      Alert.alert("Alterações salvas com sucesso!!");
+      setNome("");
+      setDescricao("");
+      setValor("");
+      setImage("");
+      setCarregamento(false);
     } catch (error) {
       console.log("error no update.", error);
     }
@@ -36,38 +55,45 @@ export default function EditarProduto({ route }: Editarprodutoprops) {
 
   return (
     <View style={style.containerPrincipal}>
-      <InputTexto
-        label={"Nome: " + produto.nome}
-        value={nome}
-        setvalue={setNome}
-        styleInput={style.input}
-        styleTexto={style.texto}
-      />
-      <InputTexto
-        label={"Valor: R$" + produto.valor}
-        value={valor}
-        setvalue={setValor}
-        styleInput={style.input}
-        styleTexto={style.texto}
-      />
-      <InputTexto
-        label={"Imagem: " + produto.image}
-        value={produto.image}
-        setvalue={setImage}
-        styleInput={style.input}
-        styleTexto={style.texto}
-      />
-      <InputTexto
-        label={"Descrição: " + produto.descricao}
-        value={descricao}
-        setvalue={setDescricao}
-        styleInput={style.input}
-        styleTexto={style.texto}
-      />
-      <TouchableOpacity style={style.bnt} onPress={editarItem}>
-        <Text style={style.texto}>Salvar</Text>
-      </TouchableOpacity>
-
+      {carregamento ? (
+        <View>
+          <ActivityIndicator size="large" />
+        </View>
+      ) : (
+        <View >
+          <InputTexto
+            label={"Nome: " + produto.nome}
+            value={nome}
+            setvalue={setNome}
+            styleInput={style.input}
+            styleTexto={style.texto}
+          />
+          <InputTexto
+            label={"Valor: R$" + produto.valor}
+            value={valor}
+            setvalue={setValor}
+            styleInput={style.input}
+            styleTexto={style.texto}
+          />
+          <InputTexto
+            label={"Imagem: " + produto.image}
+            value={image}
+            setvalue={setImage}
+            styleInput={style.input}
+            styleTexto={style.texto}
+          />
+          <InputTexto
+            label={"Descrição: " + produto.descricao}
+            value={descricao}
+            setvalue={setDescricao}
+            styleInput={style.input}
+            styleTexto={style.texto}
+          />
+          <TouchableOpacity style={style.bnt} onPress={editarItem}>
+            <Text style={style.texto}>Salvar</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 }
@@ -75,14 +101,12 @@ const style = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
     padding: 40,
-    backgroundColor:'#b79e91'
   },
   texto: {
     fontSize: 15,
     color: "black",
     fontFamily: "Inter_400Regular",
-    textAlign:'center'
-    
+    textAlign: "center",
   },
   input: {
     alignSelf: "center",
@@ -96,12 +120,12 @@ const style = StyleSheet.create({
     fontSize: 15,
     color: "#000000",
   },
-  bnt:{
-    alignSelf:'center',
-    width:70,
-    borderRadius:10,
-    borderWidth:2,
-    backgroundColor:"#ebe5e5",
-    marginTop:20
-  }
+  bnt: {
+    alignSelf: "center",
+    width: 70,
+    borderRadius: 10,
+    borderWidth: 2,
+    backgroundColor: "#ebe5e5",
+    marginTop: 20,
+  },
 });

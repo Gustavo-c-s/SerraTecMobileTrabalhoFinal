@@ -1,5 +1,5 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
-import React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
+
 
 type CardIntegrantesProps = {
   lista: {
@@ -14,7 +14,7 @@ export default function CardIntegrantes({ lista }: CardIntegrantesProps) {
       <Text >{lista.nome}</Text>
       <Image
         style={style.box}
-        source={{ uri: lista.image }}
+        source={{uri:lista.image}}
         alt="foto pessoal do grupo"
       />
       <Text>{lista.frase}</Text>
@@ -25,11 +25,13 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems:'center',
+    paddingBottom:40
     
   },
   box: {
     borderRadius:100,
     height: 200,
     width: 200,
+    margin:20
   },
 });
