@@ -3,66 +3,98 @@ import {
   FlatList,
   StyleSheet,
   Button,
+  ActivityIndicator,
+  TouchableOpacity,
+  Text,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import CardProduto from "../components/CardProduto";
-import axios from "axios";
-import { VitriniScreenProps } from "../types/navigation";
-const URL = "";
+import React, { useContext, useEffect, useState } from "react";
+import CardProduto from "./CardScreens/CardProduto";
 
-export default function VitriniScreem({navigation}:VitriniScreenProps) {
-  const [lista, setLista] = useState<any>([
-    {
-      id: "1",
-      name: "Tenis",
-      valor: 200,
-      image: 'https://midonstore.com/cdn/shop/files/2AA3B3C6-3196-4ACE-AA9F-25BF290CD1C0_1.jpg?v=1708305269&width=1179',
-    },
-    {
-      id: "2",
-      name: "Tenis",
-      valor: 250,
-      image: 'https://midonstore.com/cdn/shop/files/2AA3B3C6-3196-4ACE-AA9F-25BF290CD1C0_1.jpg?v=1708305269&width=1179',
-    },
-  ]);
-  const deletarItem = (id: number) => {
-    console.log("Deletar Tarefa. Id: ", id);
-    const listaFiltrada = lista.filter((item) => item.id !== id);
-    setLista(listaFiltrada);
+import { VitriniScreenProps } from "../types/navigation";
+import { getProduto } from "../services/produtosService";
+
+import { AuthContext } from "../components/Context/AuthContext";
+
+export default function VitriniScreem({ navigation }: VitriniScreenProps) {
+  const { lista, setLista, carregamento, setCarregamento } =
+    useContext(AuthContext);
+
+  const obterDados = async () => {
+    setCarregamento(true);
+    try {
+      setCarregamento(true);
+      const listaProduto = await getProduto();
+      console.log("DADOS: ", listaProduto);
+      setLista(listaProduto);
+      setCarregamento(false);
+    } catch (error) {
+      console.log("error no get.", error);
+    }
   };
-    useEffect(() => {
-      const obterDados = async () => {
-        try {
-          const { data } = await axios.get(URL);
-          console.log("DADOS: ", data);
-          setLista(data);
-        } catch (error) {
-          console.log("error no get.", error);
-        }
-      };
-      obterDados();
-    }, []);
+  useEffect(() => {
+    obterDados();
+  }, []);
 
   return (
     <View style={style.container}>
-      <FlatList
-        data={lista}
-        renderItem={({ item}) => (
-          <View>
-          <CardProduto lista={item} deletarItem={deletarItem} />
-          <Button
-           title="ir para pagina detalhes do produto" 
-           onPress={'ir para pagina detalhes do produto'}/>
-          </View>
-        )}
-        keyExtractor={(item) => item.id.toString()}
-      />
+      {carregamento ? (
+        <View>
+          <ActivityIndicator size="large" />
+        </View>
+      ) : (
+        <View>
+          <FlatList
+            style={style.flast}
+            data={lista}
+            renderItem={({ item }) => (
+              <View>
+                <CardProduto
+                  route={{ params: { item: item } }}
+                  navigation={navigation}
+                />
+                <TouchableOpacity
+                  style={style.touchable}
+                  onPress={() =>
+                    navigation.navigate("CardProduto", {
+                      item: item,
+                    })
+                  }
+                >
+                  <Text style={style.buttonText}>Produto</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        </View>
+      )}
     </View>
   );
 }
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
   },
- 
+  touchable: {
+    backgroundColor: "black",
+    borderRadius: 5,
+    padding: 0,
+    width: 100,
+    height: 50,
+    marginHorizontal: 40,
+    marginVertical: 30,
+    alignSelf: "center",
+  },
+  buttonText: {
+    fontFamily: "Inter_400Regular",
+    fontWeight: 600,
+    color: "white",
+    textAlign: "center",
+    paddingTop: 10,
+    fontSize: 16,
+  },
+  flast: {
+    marginTop: 40,
+  },
 });

@@ -1,41 +1,76 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import  { useState } from "react";
+import { InputProps } from "../types/types";
 
-type InputProps={
-  label:string;
-  value:string;
-  setvalue:undefined;
-
-}
-
-export default function Input({ label ,value,setvalue}:InputProps) {
-
+export function InputTexto({ styleTexto, styleInput , label, value, setvalue }: InputProps) {
   return (
     <View>
       <View>
-        <Text style={styles.texto}>{label}</Text>;
+        <Text style={styleTexto}>{label}</Text>
       </View>
       <TextInput
-        style={styles.input}
+        style={ styleInput}
         value={value}
         onChangeText={setvalue}
-        placeholder="Aqui vai o meu placeholder"
+        placeholder="Digite aqui..."
+      />
+    </View>
+  );
+}
+export function InputSenha({ styleTexto, styleInput , label, value, setvalue }: InputProps) {
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+  return (
+    <View>
+      <View>
+        <Text style={styleTexto}>{label}</Text>
+      </View>
+      <TextInput
+        style={styleInput}
+        value={value}
+        onChangeText={setvalue}
+        placeholder="Digite aqui..."
+        secureTextEntry={!mostrarSenha}
+      />
+      <TouchableOpacity
+        onPress={() => setMostrarSenha(!mostrarSenha)}
+        style={styles.toggleButton}
+      >
+        <Text>{mostrarSenha ? "👀" : "🙈"}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+export function InputEmail({styleTexto, styleInput, label, value, setvalue }: InputProps) {
+  return (
+    <View>
+      <View>
+        <Text style={styleTexto}>{label}</Text>
+      </View>
+      <TextInput
+        style={styleInput}
+        value={value}
+        onChangeText={setvalue}
+        placeholder="Digite aqui..."
+        keyboardType="email-address"
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
- 
-  texto: {
-    margin: 20,
-    fontSize: 35,
-    textAlign: "center",
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
+  toggleButton:{
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection:'column',
+    position:'absolute',
+    top:50,
+    left:220
+    },
 });
