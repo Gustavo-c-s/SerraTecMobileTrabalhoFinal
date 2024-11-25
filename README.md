@@ -1,4 +1,4 @@
-# BEARApp
+# BEAR_App
 
 ## 📜 Descrição do Projeto
 
