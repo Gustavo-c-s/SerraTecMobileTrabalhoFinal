@@ -1,12 +1,11 @@
 import {
   View,
-  Button,
   StyleSheet,
   TouchableOpacity,
   Alert,
   ActivityIndicator,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { Editarprodutoprops } from "../../types/navigation";
 import { updateProduto } from "../../services/produtosService";
 import { InputTexto } from "../../components/Input";

@@ -6,7 +6,7 @@ import CadastrarProduto from "../screens/CadastroScreens/CadastrarProdudos";
 import EditarProduto from "../screens/EditarScreens/EditarProduto";
 import EditarUsuario from "../screens/EditarScreens/EditarUsuario";
 import DrawerNavigator from "./DrawerNavigation";
-// import NavBar from "../components/NavBar";
+
 
 const { Navigator, Screen } = createNativeStackNavigator<StackParamList>();
 
@@ -19,7 +19,6 @@ export const RotasPrivadas = () => {
         options={{
           headerShown: false,
         }}
-        //  layout={NavBar}
       />
 
       <Screen
@@ -34,13 +33,18 @@ export const RotasPrivadas = () => {
       <Screen
         name="Integrante"
         component={IntegrantesScreen}
-        options={{
-          headerTitle: "KND - A Turma do Bairro",
-        }}
+        
       />
-      <Screen name="Editarproduto" component={EditarProduto} />
+      <Screen name="Editarproduto" component={EditarProduto}
+       options={{
+        headerTitle: " Editar Produto",
+      }}
+      />
       <Screen name="Editarusuario" component={EditarUsuario} />
-      <Screen name="CardProduto" component={CardProduto} />
+      <Screen name="CardProduto" component={CardProduto} 
+      options={{
+        headerTitle: "Produto",
+      }}/>
     </Navigator>
   );
 };

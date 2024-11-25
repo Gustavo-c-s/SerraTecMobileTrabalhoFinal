@@ -7,7 +7,7 @@ import {
   Alert,
   ActivityIndicator,
 } from "react-native";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { CardProdutoprops } from "../../types/navigation";
 import { deleteProduto } from "../../services/produtosService";
 import { AuthContext } from "../../components/Context/AuthContext";

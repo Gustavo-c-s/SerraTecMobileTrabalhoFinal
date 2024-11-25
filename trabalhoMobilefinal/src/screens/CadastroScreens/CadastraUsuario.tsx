@@ -1,14 +1,12 @@
 import {
   ActivityIndicator,
   Alert,
-  Button,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useContext, useState } from "react";
-
+import { useContext, useState } from "react";
 import { postUsuario } from "../../services/usuarioService";
 import { InputEmail, InputSenha, InputTexto } from "../../components/Input";
 import { AuthContext } from "../../components/Context/AuthContext";

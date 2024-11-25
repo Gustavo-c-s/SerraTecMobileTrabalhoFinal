@@ -1,12 +1,9 @@
-import React from "react";
+
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerParamList } from "../types/navigation";
-
-import Login from "../screens/Login";
 import { HomeScreen } from "../screens/HomeScreen";
 import IntegrantesScreen from "../screens/IntegrantesScreen";
 import CadastrarProduto from "../screens/CadastroScreens/CadastrarProdudos";
-
 import EditarUsuario from "../screens/EditarScreens/EditarUsuario";
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -18,7 +15,7 @@ const DrawerNavigator = () =>{
             <Drawer.Screen 
                 name="HomeScreen"
                 component={HomeScreen}
-                options={{title:"Home"}}
+                options={{title:"Produtos"}}
             />
             
             <Drawer.Screen 

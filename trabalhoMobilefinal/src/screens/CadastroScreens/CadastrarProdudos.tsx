@@ -1,7 +1,5 @@
 import { View, Text, Alert, ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
-
 import { useContext, useState } from "react";
-import { Button } from "@react-navigation/elements";
 import { postProduto } from "../../services/produtosService";
 import { InputTexto } from "../../components/Input";
 import { AuthContext } from "../../components/Context/AuthContext";
