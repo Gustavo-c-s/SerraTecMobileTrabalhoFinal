@@ -2,12 +2,11 @@ import {
   View,
   FlatList,
   StyleSheet,
-  Button,
   ActivityIndicator,
   TouchableOpacity,
   Text,
 } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import CardProduto from "./CardScreens/CardProduto";
 
 import { VitriniScreenProps } from "../types/navigation";
@@ -49,7 +48,7 @@ export default function VitriniScreem({ navigation }: VitriniScreenProps) {
             renderItem={({ item }) => (
               <View>
                 <CardProduto
-                  route={{ params: { item: item } }}
+                  route={{ params: { item: item} }}
                   navigation={navigation}
                 />
                 <TouchableOpacity
