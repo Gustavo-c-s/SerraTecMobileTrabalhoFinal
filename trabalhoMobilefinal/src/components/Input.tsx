@@ -5,7 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import  { useState } from "react";
 import { InputProps } from "../types/types";
 
 export function InputTexto({ styleTexto, styleInput , label, value, setvalue }: InputProps) {

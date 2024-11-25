@@ -1,7 +1,7 @@
 import { produto } from "../types/types";
 import api from "./api";
 
-export const getProduto = async (): Promise<[produto]> => {
+export const getProduto = async (): Promise<produto[]> => {
   const { data } = await api.get("/produtos");
   return data;
 };

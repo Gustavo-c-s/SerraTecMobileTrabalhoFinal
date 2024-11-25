@@ -39,7 +39,6 @@ export default function CadastrarProduto() {
     } catch (error) {
       console.log("Erro post produto", error);
     }
-    //console.log(nome, descricao,valor, image)
   };
   return (
     <View style={style.containerPrincipal}>
@@ -83,7 +82,7 @@ export default function CadastrarProduto() {
             setvalue={setImage}
           />
           <TouchableOpacity style={style.bnt} onPressIn={cadastroProduto}>
-            <Text style={style.texto}>CADASTRAR</Text>
+            <Text style={style.texto}>Cadastar</Text>
           </TouchableOpacity>
          
         </View>
@@ -96,7 +95,7 @@ const style = StyleSheet.create({
   Cadastro: {
     color: "black",
     fontFamily: "Inter_400Regular",
-    fontWeight: "thin",
+    fontWeight: "bold",
     fontSize: 25,
     marginBottom: "4%",
     alignSelf: "center",

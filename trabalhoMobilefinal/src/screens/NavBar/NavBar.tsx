@@ -20,11 +20,7 @@ export default function NavBar() {
             <TouchableOpacity onPress={logout}>
               <Text style={styles.texto}>SAIR</Text>
             </TouchableOpacity>
-            {/* <FontAwesome name="heart-o" size={19} color="black" />
-            <AntDesign name="adduser" size={19} color="black" />
-            <AntDesign name="deleteuser" size={19} color="black" />
-            <SimpleLineIcons name="bag" size={19} color="black" />
-            <MaterialCommunityIcons name="menu" size={19} color="black" /> */}
+          
           </View>
         ) : (
           <View style={styles.icones}>

@@ -5,7 +5,7 @@ export const AuthContext = createContext<any>(undefined);
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [lista, setLista] = useState<produto[]>([]);
-  const [user, setUser] = useState<any>(true);
+  const [user, setUser] = useState<any>(null);
   const [carregamento, setCarregamento] = useState(false);
   const entrar = (usuario: usuario) => {
     if (usuario) setUser(usuario);

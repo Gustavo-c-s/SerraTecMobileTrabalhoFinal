@@ -69,13 +69,6 @@ export type DrawerParamList = {
   
 };
 
-// Rotas do Bottom Tabs
-export type BottomTabsParamList = {
-  HomeScreen: undefined;
-  IntegrantesScreen: undefined;
-  VitriniScreen: undefined;
-  Login: undefined;
-};
 
 // Rotas do Stack de Login
 export type LoginStackParamList = {

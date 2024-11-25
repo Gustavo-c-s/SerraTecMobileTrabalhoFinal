@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   ImageBackground,
   StyleSheet,
@@ -17,11 +18,20 @@ export default function Login({ navigation }: LoginProps) {
   const [senha, setSenha] = useState("");
   const { entrar } = useContext(AuthContext);
   const fazerLogin = async (login: string, senha: string) => {
-    const usuarios = await getUsuraioLogin(login, senha);
-    if (usuarios[0]) {
-      entrar(usuarios[0]);
+    if(login =="" || senha ==''){
+      Alert.alert("É necessario peencher todas as informações");
+      return;
     }
-    console.log(usuarios);
+    try{
+
+      const usuarios = await getUsuraioLogin(login, senha);
+      if (usuarios[0]) {
+        entrar(usuarios[0]);
+      }
+    }catch(error){
+      Alert.alert("Login ou senha incorretas")
+    }
+   
   };
 
   return (

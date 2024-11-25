@@ -112,7 +112,7 @@ const style = StyleSheet.create({
     alignSelf: "center",
     color: "black",
     fontFamily: "Inter_400Regular",
-    fontWeight: "thin",
+    fontWeight: "bold",
     fontSize: 25,
     marginBottom: "4%",
   },

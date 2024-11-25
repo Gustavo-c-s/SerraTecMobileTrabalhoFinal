@@ -91,7 +91,7 @@ export default function EditarUsuario() {
             styleTexto={style.texto}
           />
           <TouchableOpacity style={style.bnt} onPress={editarUsuario}>
-            <Text style={style.texto}>Salvar</Text>
+            <Text style={style.textobnt}>Salvar</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -123,10 +123,16 @@ const style = StyleSheet.create({
   },
   bnt: {
     alignSelf: "center",
-    width: 70,
+    width: 80,
     borderRadius: 10,
     borderWidth: 2,
-    backgroundColor: "#ebe5e5",
+    backgroundColor: "#000",
     marginTop: 20,
+  },
+  textobnt: {
+    fontSize: 15,
+    color: "white",
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
   },
 });
