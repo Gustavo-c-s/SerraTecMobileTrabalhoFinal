@@ -8,12 +8,9 @@ import {
 } from "react-native";
 import { useContext, useEffect } from "react";
 import CardProduto from "./CardScreens/CardProduto";
-
 import { VitriniScreenProps } from "../types/navigation";
 import { getProduto } from "../services/produtosService";
-
 import { AuthContext } from "../components/Context/AuthContext";
-
 export default function VitriniScreem({ navigation }: VitriniScreenProps) {
   const { lista, setLista, carregamento, setCarregamento } =
     useContext(AuthContext);

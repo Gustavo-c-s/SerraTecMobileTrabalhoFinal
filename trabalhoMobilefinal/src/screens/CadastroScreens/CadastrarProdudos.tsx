@@ -1,12 +1,21 @@
-import { View, Text, Alert, ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Alert,
+  ActivityIndicator,
+  StyleSheet,
+  TouchableOpacity,
+  Keyboard,
+} from "react-native";
 import { useContext, useState } from "react";
 import { postProduto } from "../../services/produtosService";
 import { InputTexto } from "../../components/Input";
 import { AuthContext } from "../../components/Context/AuthContext";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 export default function CadastrarProduto() {
   const [carregando, setCarregando] = useState(false);
-  const {lista,setLista}=useContext(AuthContext)
+  const { lista, setLista } = useContext(AuthContext);
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [valor, setValor] = useState("");
@@ -29,7 +38,7 @@ export default function CadastrarProduto() {
       console.log("Produto cadastrado", eviarProdutos);
       setCarregando(false);
       Alert.alert("Cadastro realizado com sucesso!");
-      setLista([...lista,eviarProdutos])
+      setLista([...lista, eviarProdutos]);
       setNome("");
       setDescricao("");
       setValor("");
@@ -46,50 +55,49 @@ export default function CadastrarProduto() {
         </View>
       ) : (
         <View style={style.containerPrincipal}>
-          <Text style={style.Cadastro}>Cadastro de Produto</Text>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <Text style={style.Cadastro}>Cadastro de Produto</Text>
+            <InputTexto
+              styleTexto={style.texto}
+              styleInput={style.input}
+              label="Nome do Produto:"
+              value={nome}
+              setvalue={setNome}
+            />
 
-          <InputTexto
-            styleTexto={style.texto}
-            styleInput={style.input}
-            label="Nome do Produto:"
-            value={nome}
-            setvalue={setNome}
-          />
+            <InputTexto
+              styleTexto={style.texto}
+              styleInput={style.input}
+              label="Descrição:"
+              value={descricao}
+              setvalue={setDescricao}
+            />
 
-          <InputTexto
-           styleTexto={style.texto}
-           styleInput={style.input}
-            label="Descrição:"
-            value={descricao}
-            setvalue={setDescricao}
-          />
+            <InputTexto
+              styleTexto={style.texto}
+              styleInput={style.input}
+              label="Preço:"
+              value={valor}
+              setvalue={setValor}
+            />
 
-          <InputTexto
-            styleTexto={style.texto}
-            styleInput={style.input}
-            label="Preço:"
-            value={valor}
-            setvalue={setValor}
-          />
-
-          <InputTexto
-            styleTexto={style.texto}
-            styleInput={style.input}
-            label="Imagen:"
-            value={image}
-            setvalue={setImage}
-          />
-          <TouchableOpacity style={style.bnt} onPressIn={cadastroProduto}>
-            <Text style={style.texto}>Cadastar</Text>
-          </TouchableOpacity>
-         
+            <InputTexto
+              styleTexto={style.texto}
+              styleInput={style.input}
+              label="Imagen:"
+              value={image}
+              setvalue={setImage}
+            />
+            <TouchableOpacity style={style.bnt} onPressIn={cadastroProduto}>
+              <Text style={style.textobnt}>Cadastar</Text>
+            </TouchableOpacity>
+          </TouchableWithoutFeedback>
         </View>
       )}
     </View>
   );
 }
 const style = StyleSheet.create({
-
   Cadastro: {
     color: "black",
     fontFamily: "Inter_400Regular",
@@ -101,14 +109,12 @@ const style = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
     padding: 20,
-   
   },
   texto: {
     fontSize: 15,
     color: "black",
     fontFamily: "Inter_400Regular",
-    textAlign:'center'
-    
+    textAlign: "center",
   },
   input: {
     alignSelf: "center",
@@ -122,14 +128,20 @@ const style = StyleSheet.create({
     fontSize: 15,
     color: "#000000",
   },
-  bnt:{
-    alignSelf:'center',
-    width:'auto',
-    height:40,
-    borderRadius:10,
-    borderWidth:2,
-    backgroundColor:"#ebe5e5",
-    marginTop:20,
-    padding:5
-  }
+  bnt: {
+    alignSelf: "center",
+    width: "auto",
+    height: 40,
+    borderRadius: 10,
+    borderWidth: 2,
+    backgroundColor: "#080808",
+    marginTop: 20,
+    padding: 5,
+    justifyContent: "center",
+  },
+  textobnt: {
+    fontSize: 14,
+    color: "white",
+    fontFamily: "Inter_400Regular",
+  },
 });

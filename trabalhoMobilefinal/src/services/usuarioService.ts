@@ -1,14 +1,14 @@
 import { usuario } from "../types/types";
 import api from "./api";
 
-export const getUsuraio = async (): Promise<usuario[]> => {
-  const { data } = await api.get("/usuarios");
-  return data;
-};
+// export const getUsuraio = async (): Promise<usuario[]> => {
+//   const { data } = await api.get("/usuarios");
+//   return data;
+// };
 export const getUsuraioLogin = async (
   email: string,
   senha: string
-): Promise<usuario[]> => {
+): Promise<[usuario]> => {
   const {data} = await api.get(`/usuarios?email=${email}&senha=${senha}`);
 
   return data;
