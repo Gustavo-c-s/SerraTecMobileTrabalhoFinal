@@ -2,7 +2,7 @@
 
 ## 📜 Descrição do Projeto
 
-O **BEAR** é um aplicativo mobile desenvolvido em React Native para gerenciar e exibir informações sobre roupas. Este projeto inclui funcionalidades como autenticação, navegação intuitiva, listagem e filtro de produtos, além do gerenciamento completo (CRUD) de roupas. Também apresenta informações sobre os integrantes do grupo do projeto.
+O **BEAR** é um aplicativo mobile desenvolvido em React Native para gerenciar e exibir informações sobre roupas. Este projeto inclui funcionalidades como autenticação, navegação intuitiva, listagem de produtos, além do gerenciamento completo (CRUD) de roupas. Também apresenta informações sobre os integrantes do grupo do projeto.
 
 ---
 
