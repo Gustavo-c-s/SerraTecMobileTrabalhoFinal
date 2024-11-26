@@ -1,9 +1,11 @@
 import {
   Alert,
   ImageBackground,
+  Keyboard,
   StyleSheet,
   Text,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import { useContext, useState } from "react";
@@ -24,8 +26,9 @@ export default function Login({ navigation }: LoginProps) {
     try{
 
       const usuarios = await getUsuraioLogin(login, senha);
-      if (usuarios[0]) {
+      if (usuarios) {
         entrar(usuarios[0]);
+        console.log(usuarios[0])
       }
     }catch(error){
       Alert.alert("Login ou senha incorretas")
@@ -34,6 +37,7 @@ export default function Login({ navigation }: LoginProps) {
   };
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <ImageBackground
       source={{
         uri: "https://i.pinimg.com/736x/54/c7/5c/54c75cfe882fde55d0d0a89604547ad8.jpg",
@@ -64,7 +68,7 @@ export default function Login({ navigation }: LoginProps) {
           <Text style={style.buttonText}>Cria Conta</Text>
         </TouchableOpacity>
       </View>
-    </ImageBackground>
+    </ImageBackground></TouchableWithoutFeedback>
   );
 }
 const style = StyleSheet.create({

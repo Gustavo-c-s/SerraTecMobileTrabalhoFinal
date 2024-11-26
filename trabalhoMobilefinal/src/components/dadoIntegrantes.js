@@ -11,8 +11,7 @@ export const dados = [
     nome: "Guilherme Senna Pires",
     image:
       "https://cdn.discordapp.com/attachments/866817560774967297/1310650823474417664/IMG_20240912_2207189302.jpg?ex=6745fe33&is=6744acb3&hm=7457dde286e01f94b043dd7afb1d33d337c60a5c8e1831d5a43b49075bd97a52&",
-    frase: "Ansiedade ta me consumindo 📈"
-  },
+    frase: "Você ja sonhou com esse homem ?🎇😴 "  },
   {
     id: "3",
     nome: "Milton Rodrigues de Melo Filho",
@@ -33,7 +32,7 @@ export const dados = [
     nome: "João Gabriel Tavares Siqueira",
     image:
       "https://media-gig4-1.cdn.whatsapp.net/v/t61.24694-24/376257692_1378058353094128_2195551330922801300_n.jpg?ccb=11-4&oh=01_Q5AaIBrSdunZ0USbSvgdtk0XhDojemF1pHqxHe7sNE9MGMA9&oe=67470038&_nc_sid=5e03e0&_nc_cat=106",
-      frase: "Amo minha mulher 🛐",
+      frase: "Amo minha mulher 🛐😍",
   },
   {
     id: "6",

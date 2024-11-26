@@ -1,9 +1,11 @@
 import {
   ActivityIndicator,
   Alert,
+  Keyboard,
   StyleSheet,
   Text,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import { useContext, useState } from "react";
@@ -24,12 +26,12 @@ export default function CadastraUsuario() {
     return regex.test(email);
   };
   const cadastrar = async () => {
-    if (!validarEmail(email)) {
-      Alert.alert("E-mail inválido", `Você inseriu: ${email}`);
-      return;
-    }
     if (nome == "" || email == "" || senha == "" || telefone == "") {
       Alert.alert("É necessario peencher todas as informações");
+      return;
+    }
+    if (!validarEmail(email)) {
+      Alert.alert("E-mail inválido", `Você inseriu: ${email}`);
       return;
     }
     setCarregamento(true);
@@ -55,55 +57,57 @@ export default function CadastraUsuario() {
     }
   };
   return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={style.containerPrincipal}>
       {carregamento ? (
         <View>
           <ActivityIndicator size={"large"} />
         </View>
       ) : (
-        <View>
-          <Text style={style.Cadastro}>Cadastrar</Text>
-          <InputTexto
-            styleTexto={style.texto}
-            styleInput={style.input}
-            label="Nome: "
-            value={nome}
-            setvalue={setNome}
-          />
-          <InputEmail
-            styleTexto={style.texto}
-            styleInput={style.input}
-            label="Email: "
-            value={email}
-            setvalue={setEmail}
-          />
-          <InputSenha
-            styleTexto={style.texto}
-            styleInput={style.input}
-            label="Senha: "
-            value={senha}
-            setvalue={setSenha}
-          />
-          <InputTexto
-            styleTexto={style.texto}
-            styleInput={style.input}
-            label="Telefone: "
-            value={telefone}
-            setvalue={setTelefone}
-          />
-          <TouchableOpacity style={style.bnt} onPressIn={cadastrar}>
-            <Text style={style.texto}>CADASTRAR</Text>
-          </TouchableOpacity>
-        </View>
+          <View>
+            <Text style={style.Cadastro}>Cadastrar</Text>
+            <InputTexto
+              styleTexto={style.texto}
+              styleInput={style.input}
+              label="Nome: "
+              value={nome}
+              setvalue={setNome}
+            />
+            <InputEmail
+              styleTexto={style.texto}
+              styleInput={style.input}
+              label="Email: "
+              value={email}
+              setvalue={setEmail}
+            />
+            <InputSenha
+              styleTexto={style.texto}
+              styleInput={style.input}
+              label="Senha: "
+              value={senha}
+              setvalue={setSenha}
+            />
+            <InputTexto
+              styleTexto={style.texto}
+              styleInput={style.input}
+              label="Telefone: "
+              value={telefone}
+              setvalue={setTelefone}
+            />
+            <TouchableOpacity style={style.bnt} onPressIn={cadastrar}>
+              <Text style={style.textobnt}>CADASTRAR</Text>
+            </TouchableOpacity>
+          </View>
       )}
     </View>
+      </TouchableWithoutFeedback>
   );
 }
 const style = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
     alignItems: "center",
-    alignSelf: "center",
+    backgroundColor: "#ffffff",
   },
   Cadastro: {
     marginTop: 50,
@@ -124,7 +128,7 @@ const style = StyleSheet.create({
   },
   input: {
     justifyContent: "center",
-    alignContent: "center",
+    alignSelf: "center",
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
@@ -138,7 +142,14 @@ const style = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     borderWidth: 2,
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#080808",
     marginTop: 20,
+    padding: 5,
+    justifyContent: "center",
+  },
+  textobnt: {
+    fontSize: 14,
+    color: "white",
+    fontFamily: "Inter_400Regular",
   },
 });
